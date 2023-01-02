@@ -1,0 +1,12 @@
+.navbar {
+    /* 50 to 100px */
+    margin-right: calc(3.125rem + ((1vw - 7.68px) * 4.3403));
+    border-left: var(--primary-font-color) 1px solid;
+    padding-left: 10px;
+}
+
+@media screen and (max-width: 1200px) {
+    .navbar {
+        display: none;
+    }
+}

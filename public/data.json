@@ -1,0 +1,6 @@
+{
+    "intro": "Hi, I'm Shourya",
+    "bio": ["Open Source Enthusiast", "Full Stack Developer", "Undergrad CSE Student"],
+    "email": "danger.ahead@protonmail.com",
+    "paths": ["projects", "experience", "contact"]
+}
