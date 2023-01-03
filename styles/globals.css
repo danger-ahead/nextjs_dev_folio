@@ -1,20 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,200;0,400;0,500;0,700;1,400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=La+Belle+Aurore&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,200;0,400;0,500;0,700;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=La+Belle+Aurore&display=swap");
 
 :root {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   --primary-font-color: white;
+  --secondary-font-color: #08fdd8;
   --primary-color: #1d1d1d;
   --secondary-color: #515152;
 }
 
 body {
   background-color: var(--primary-color);
-  height: calc(100vh - 16px);
+  margin: 0 8px;
 }
 
 .cursive {
-  font-family: 'La Belle Aurore', cursive;
+  font-family: "La Belle Aurore", cursive;
 }
 
 .title {
@@ -48,8 +49,16 @@ body {
   color: var(--primary-font-color);
 }
 
+.secondary-font-color {
+  color: var(--secondary-font-color);
+}
+
 .secondary {
   color: var(--secondary-color);
+}
+
+.text-shadow {
+  text-shadow: 3px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 @media screen and (max-width: 767px) {
@@ -71,6 +80,10 @@ body {
 
 .h-100 {
   height: 100vh;
+}
+
+.mh-100 {
+  min-height: 100vh;
 }
 
 .margin-left {
@@ -145,6 +158,22 @@ body {
   text-decoration: none;
 }
 
+.border-none {
+  border: none;
+}
+
+.bg-transparent {
+  background-color: transparent;
+}
+
 .white-space-nowrap {
   white-space: nowrap;
+}
+
+.opacity-1 {
+  opacity: 1;
+}
+
+.opacity-0 {
+  opacity: 0;
 }

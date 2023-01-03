@@ -13,7 +13,7 @@ export default function PageBody(
     | ReactPortal
 ) {
   return (
-    <main className="d-flex flex-column h-100">
+    <main className="d-flex flex-column mh-100">
       {HtmlTags(`<html>`, "")}
       {HtmlTags(`<body>`, "margin-left")}
       <div className="margin-left d-flex flex-column justify-content-center flex-grow">

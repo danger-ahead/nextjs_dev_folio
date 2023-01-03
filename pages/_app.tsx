@@ -1,8 +1,15 @@
 import "../styles/globals.css";
 import "../styles/component.bouncingtext.css";
+import "../styles/component.fallintextentry.css";
 import "../styles/component.navbar.css";
+import "../styles/component.transition.css";
 import type { AppProps } from "next/app";
+import Transition from "../components/Transition";
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  return (
+    <Transition>
+      <Component {...pageProps} />
+    </Transition>
+  );
 }

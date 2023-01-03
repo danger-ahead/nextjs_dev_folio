@@ -2,8 +2,9 @@
   color: var(--primary-font-color);
 }
 
-.elasticAnimate, .elastic:hover {
-  animation-name: bounce, colorChange;
+.elasticAnimate,
+.elastic:hover {
+  animation-name: elasticAnimation, colorChange;
   animation-duration: 1s;
   animation-iteration-count: 1;
 }
@@ -13,11 +14,11 @@
     color: var(--primary-font-color);
   }
   100% {
-    color: #08fdd8;
+    color: var(--secondary-font-color);
   }
 }
 
-@keyframes bounce {
+@keyframes elasticAnimation {
   0% {
     -webkit-transform: scale3d(1, 1, 1);
     -ms-transform: scale3d(1, 1, 1);

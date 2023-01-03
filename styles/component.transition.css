@@ -1,0 +1,48 @@
+.appear {
+  opacity: 1;
+  scale: 1;
+  transition: 1s;
+  animation-name: translate-page-backward;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes translate-page-backward {
+  0% {
+    scale: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+    scale: 1;
+    transform: translate3d(0%, 0, 0);
+  }
+}
+
+.disappear {
+  opacity: 0;
+  scale: 0;
+  transition: 1s;
+  animation-name: translate-page-forward;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.disappear2 {
+  animation-name: translate-page-forward;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes translate-page-forward {
+  0% {
+    scale: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    scale: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+}

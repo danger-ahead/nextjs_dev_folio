@@ -3,17 +3,21 @@ import { data } from "../repository/DataRepository";
 import BouncingText from "../components/BouncingText";
 import PageBody from "../components/PageBody";
 import { useEffect } from "react";
-import { Navbar } from "../components/Navbar";
+import { HorizontalNavbar } from "../components/HorizontalNavbar";
 import { HtmlTags } from "../components/HtmlTags";
+// import UseOnScreen from "../hooks/UseOnScreen";
 
 export default function Home() {
+  // const aboutRef = useRef<HTMLDivElement>(null);
+  // const aboutRefValue = UseOnScreen(aboutRef);
+
   useEffect(() => {
     // set an interval to animate the elements
-    const interval = setInterval(() => {
-      const elements = document.getElementsByClassName("elastic");
+    const elements = document.getElementsByClassName("elastic");
 
-      // variables to store the random indexes of the elements that we will animate
-      var index1, index2, index3, index4;
+    // variables to store the random indexes of the elements that we will animate
+    var index1: number, index2: number, index3: number, index4: number;
+    const interval = setInterval(() => {
       try {
         // get random indexes
         index1 = Math.floor(Math.random() * (elements.length - 0));
@@ -34,20 +38,30 @@ export default function Home() {
         console.error("Error animating elements");
       }
     }, 1000);
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      removeClass(index1);
+      removeClass(index2);
+      removeClass(index3);
+      removeClass(index4);
+    };
   }, []);
 
   function removeClass(index: number) {
     setTimeout(() => {
       const elements = document.getElementsByClassName("elastic");
-      elements[index].classList.remove("elasticAnimate");
+      try {
+        elements[index].classList.remove("elasticAnimate");
+      } catch {
+        console.error("Error removing animation class");
+      }
     }, 1000);
   }
 
   return (
-    <>
+    <div id="index-page">
       <Head>
-        <title>{`${data.intro} || The Average Developer`}</title>
+        <title>{`About Me || The Average Developer`}</title>
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -55,22 +69,24 @@ export default function Home() {
       {PageBody(
         <div className="margin-left">
           {HtmlTags(`<h>`, "")}
+          {BouncingText("Hi, I'm", "subtitle")}
           {BouncingText(data.intro, "title")}
           {HtmlTags(`</h>`, "")}
           <div className="d-flex flex-column">
-            {data.bio.map((i, index) => {
+            {HtmlTags(`<span>`, "")}
+            {data.tagline.map((i, index) => {
               return (
-                <div key={`${index}${i}`}>
-                  {HtmlTags(`<span>`, "")}
-                  {BouncingText(i, "subtitle")}
-                  {HtmlTags(`</span>`, "")}
-                </div>
+                <div key={`${index}${i}`}>{BouncingText(i, "subtitle")}</div>
               );
             })}
+            {HtmlTags(`</span>`, "")}
           </div>
         </div>
       )}
-      {Navbar()}
-    </>
+      {HorizontalNavbar()}
+      {/* <div id={`${data.paths[0]}`} ref={aboutRef}>
+        {aboutRefValue && <About />}
+      </div> */}
+    </div>
   );
 }
