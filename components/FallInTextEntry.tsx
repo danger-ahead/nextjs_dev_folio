@@ -1,6 +1,6 @@
-import { ReactElement, useEffect, useState } from "react";
+import { useEffect } from "react";
 
-export default function BouncingTextEntry(data: String, cssClass: String) {
+export default function FallInTextEntry(data: String, cssClass: String) {
   const element: JSX.Element[] = [];
 
   for (let i = 0; i < data.length; i++) {

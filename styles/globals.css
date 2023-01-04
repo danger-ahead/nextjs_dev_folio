@@ -189,3 +189,7 @@ body {
 .text-align-justify {
   text-align: justify;
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}

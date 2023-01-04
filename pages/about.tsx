@@ -2,13 +2,10 @@ import Head from "next/head";
 import { data } from "../repository/DataRepository";
 import PageBody from "../components/PageBody";
 import { HtmlTags } from "../components/HtmlTags";
-import { useEffect } from "react";
-import BouncingTextEntry from "../components/FallInTextEntry";
+import FallInTextEntry from "../components/FallInTextEntry";
 import Image from "next/image";
 
 export default function About() {
-  useEffect(() => {});
-
   function onClick() {
     const element = document.getElementById("about-picture");
 
@@ -30,7 +27,7 @@ export default function About() {
           <div className="margin-left d-flex flex-column about-text">
             <div className="d-flex flex-row align-items-center">
               {HtmlTags(`<!--`, "white-space-nowrap")}
-              {BouncingTextEntry(
+              {FallInTextEntry(
                 "01. about me",
                 "subtitle primary-font-color text-shadow"
               )}

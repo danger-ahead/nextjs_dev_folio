@@ -4,6 +4,7 @@ import {
   ReactFragment,
   ReactPortal,
 } from "react";
+import { data } from "../repository/DataRepository";
 import { HtmlTags } from "./HtmlTags";
 
 export default function PageBody(

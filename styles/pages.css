@@ -26,6 +26,23 @@
   margin-left: 60px;
 }
 
+.experience {
+  flex-direction: row;
+}
+
+.experience-container {
+  width: 50%;
+}
+
+.experience-selection-button-container {
+  flex-direction: column;
+}
+
+.experience-selection-button {
+  flex-direction: row;
+  align-items: center;
+}
+
 @media screen and (max-width: 900px) {
   .about {
     flex-direction: column;
@@ -43,5 +60,25 @@
 
   .about-picture {
     margin-left: 0;
+  }
+
+  .experience {
+    flex-direction: column !important;
+  }
+
+  .experience-container {
+    margin-top: 50px;
+    width: 90% !important;
+  }
+
+  .experience-selection-button-container {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .experience-selection-button {
+    flex-direction: column;
+    align-items: start;
+    margin-right: 10px;
   }
 }

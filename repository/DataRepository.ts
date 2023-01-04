@@ -7,4 +7,6 @@ export const data: Data = {
   picture: dataFromJson.picture,
   tagline: dataFromJson.tagline,
   bio: dataFromJson.bio,
+  experience: dataFromJson.experience,
+  email: dataFromJson.email,
 };

@@ -15,7 +15,7 @@ export function HorizontalNavbar() {
         <div className="d-flex flex-row justify-content-start align-items-center">
           {HtmlTags(`<a href="`, "white-space-nowrap")}
           <Link
-            className="text text-decoration-none elastic text-decoration-none"
+            className="text text-decoration-none elasticOnHover primary-font-color text-decoration-none"
             href={`${Routes.about}`}
           >{`${Routes.about}`}</Link>
           {HtmlTags(`">...</a>`, "white-space-nowrap")}
@@ -23,7 +23,7 @@ export function HorizontalNavbar() {
         <div className="d-flex flex-row justify-content-start align-items-center">
           {HtmlTags(`<a href="`, "white-space-nowrap")}
           <Link
-            className="text text-decoration-none elastic text-decoration-none"
+            className="text text-decoration-none elasticOnHover primary-font-color text-decoration-none"
             href={`${Routes.experience}`}
           >{`${Routes.experience}`}</Link>
           {HtmlTags(`">...</a>`, "white-space-nowrap")}
@@ -31,7 +31,7 @@ export function HorizontalNavbar() {
         <div className="d-flex flex-row justify-content-start align-items-center">
           {HtmlTags(`<a href="`, "white-space-nowrap")}
           <Link
-            className="text text-decoration-none elastic text-decoration-none"
+            className="text text-decoration-none elasticOnHover primary-font-color text-decoration-none"
             href={`${Routes.projects}`}
           >{`${Routes.projects}`}</Link>
           {HtmlTags(`">...</a>`, "white-space-nowrap")}
@@ -39,7 +39,7 @@ export function HorizontalNavbar() {
         <div className="d-flex flex-row justify-content-start align-items-center">
           {HtmlTags(`<a href="`, "white-space-nowrap")}
           <Link
-            className="text text-decoration-none elastic text-decoration-none"
+            className="text text-decoration-none elasticOnHover primary-font-color text-decoration-none"
             href={`${Routes.contact}`}
           >{`${Routes.contact}`}</Link>
           {HtmlTags(`">...</a>`, "white-space-nowrap")}
