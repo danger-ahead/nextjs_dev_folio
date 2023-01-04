@@ -177,3 +177,15 @@ body {
 .opacity-0 {
   opacity: 0;
 }
+
+.border-radius-5 {
+  border-radius: 5%;
+}
+
+.white-space-preline {
+  white-space: pre-line;
+}
+
+.text-align-justify {
+  text-align: justify;
+}
