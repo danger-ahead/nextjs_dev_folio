@@ -10,10 +10,13 @@
 }
 
 body {
+  /* https://stackoverflow.com/a/68359419/10951873 */
+  position: fixed;
+  height: 100%;
   background-color: var(--primary-color);
   margin: 0 8px;
-  height: 100vh;
-  overflow-y: scroll;
+  overflow-y: hidden;
+  width: 100%;
 }
 
 #__next {
@@ -90,6 +93,14 @@ body {
 
 .mh-100 {
   min-height: 100vh;
+}
+
+.h-100p {
+  height: 100%;
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
 }
 
 .margin-left {

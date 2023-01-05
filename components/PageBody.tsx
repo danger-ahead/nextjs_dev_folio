@@ -14,7 +14,7 @@ export default function PageBody(
     | ReactPortal
 ) {
   return (
-    <main style={{height: "100%"}} className="d-flex flex-column">
+    <main className="d-flex flex-column h-100p overflow-y-auto">
       {HtmlTags(`<html>`, "")}
       {HtmlTags(`<body>`, "margin-left")}
       <div className="margin-left d-flex flex-column justify-content-center flex-grow">
