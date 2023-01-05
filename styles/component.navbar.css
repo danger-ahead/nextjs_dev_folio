@@ -1,12 +1,19 @@
-.horizontal-navbar {
-  /* 50 to 100px */
-  margin-right: calc(3.125rem + ((1vw - 7.68px) * 4.3403));
-  border-left: var(--primary-font-color) 1px solid;
-  padding-left: 10px;
+.navbar {
+  flex-direction: row;
+  align-items: center;
 }
 
-@media screen and (max-width: 1200px) {
-  .horizontal-navbar {
+.navbar-gap {
+  width: 5px;
+}
+
+@media screen and (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar-gap {
     display: none;
   }
 }

@@ -3,7 +3,6 @@ import { data } from "../repository/DataRepository";
 import BouncingText from "../components/BouncingText";
 import PageBody from "../components/PageBody";
 import { useEffect } from "react";
-import { HorizontalNavbar } from "../components/HorizontalNavbar";
 import { HtmlTags } from "../components/HtmlTags";
 // import UseOnScreen from "../hooks/UseOnScreen";
 
@@ -67,7 +66,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {PageBody(
-        <div className="margin-left">
+        <div key="home-page" className="margin-left">
           {HtmlTags(`<h>`, "")}
           {BouncingText("Hi, I'm", "subtitle")}
           {BouncingText(data.intro, "title")}
@@ -83,7 +82,6 @@ export default function Home() {
           </div>
         </div>
       )}
-      {HorizontalNavbar()}
       {/* <div id={`${data.paths[0]}`} ref={aboutRef}>
         {aboutRefValue && <About />}
       </div> */}

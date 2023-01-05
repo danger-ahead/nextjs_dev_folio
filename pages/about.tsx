@@ -23,7 +23,7 @@ export default function About() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {PageBody(
-        <div className="d-flex about justify-content-start">
+        <div key="about-page" className="d-flex about justify-content-start">
           <div className="margin-left d-flex flex-column about-text">
             <div className="d-flex flex-row align-items-center">
               {HtmlTags(`<!--`, "white-space-nowrap")}

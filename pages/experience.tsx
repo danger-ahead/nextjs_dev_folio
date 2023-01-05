@@ -61,7 +61,7 @@ export default function Experience() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {PageBody(
-        <>
+        <div key="experience-page">
           <div className="d-flex flex-row justify-content-start align-items-center margin-left">
             {HtmlTags(`<!--`, "white-space-nowrap")}
             {FallInTextEntry(
@@ -101,7 +101,7 @@ export default function Experience() {
             </div>
             {experiences[selectedExperience]}
           </div>
-        </>
+        </div>
       )}
     </>
   );
