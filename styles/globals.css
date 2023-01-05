@@ -19,6 +19,10 @@ body {
   width: 100%;
 }
 
+a {
+  color: var(--primary-font-color);
+}
+
 #__next {
   height: 100%;
 }
@@ -59,7 +63,7 @@ body {
 }
 
 .secondary-font-color {
-  color: var(--secondary-font-color);
+  color: var(--secondary-font-color) !important;
 }
 
 .secondary {
@@ -68,6 +72,27 @@ body {
 
 .text-shadow {
   text-shadow: 3px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.right-corner {
+  transform: rotate(90deg);
+  right: 13px;
+  bottom: 10%;
+}
+
+.right-corner-line {
+  bottom: 0%;
+  right: 55px;
+  height: 60px;
+  width: 1px;
+  background-color: var(--primary-font-color);
+}
+
+@media screen and (max-width: 900px) {
+  .right-corner,
+  .right-corner-line {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -167,6 +192,10 @@ body {
   position: absolute;
 }
 
+.position-fixed {
+  position: fixed;
+}
+
 .right-0 {
   right: 0;
 }
@@ -213,4 +242,14 @@ body {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.button-effect {
+  scale: 1;
+  transition: all 0.2s ease-in-out;
+}
+
+.button-effect:hover {
+  color: var(--secondary-font-color);
+  scale: 1.1;
 }

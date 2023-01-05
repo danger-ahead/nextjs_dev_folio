@@ -1,4 +1,4 @@
-export default function BouncingText(data: String, cssClass: String) {
+export default function ElasticText(data: String, cssClass: String) {
   const element = [];
 
   for (let i = 0; i < data.length; i++) {

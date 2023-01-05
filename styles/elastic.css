@@ -3,8 +3,7 @@
 }
 
 .elasticAnimate,
-.elastic:hover,
-.elasticOnHover:hover {
+.elastic:hover {
   animation-name: elasticAnimation, colorChange;
   animation-duration: 1s;
   animation-iteration-count: 1;

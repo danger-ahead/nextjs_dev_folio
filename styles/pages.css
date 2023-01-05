@@ -51,7 +51,6 @@
 
   .about img {
     width: calc(9.375rem + ((1vw - 3px) * 8.3333));
-    filter: sepia(0);
   }
 
   .about-text {

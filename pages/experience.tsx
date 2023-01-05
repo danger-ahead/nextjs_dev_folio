@@ -24,7 +24,7 @@ export default function Experience() {
               href={`${data.experience[experience]["company_url"]}`}
               target="_blank"
               rel="noreferrer"
-              className="text-decoration-none secondary-font-color text elasticOnHover"
+              className="text-decoration-none secondary-font-color text button-effect"
             >
               {`@${data.experience[experience]["company"]}`}
             </a>
@@ -89,7 +89,7 @@ export default function Experience() {
                     }`}
                   >
                     {HtmlTags("<button>", "white-space-nowrap")}
-                    <span className="text-small elasticOnHover">
+                    <span className="text-small button-effect">
                       {experience["company"]}
                     </span>
                     {HtmlTags("</button>", "white-space-nowrap")}

@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { data } from "../repository/DataRepository";
-import BouncingText from "../components/BouncingText";
-import PageBody from "../components/PageBody";
+import ElasticText from "../components/ElasticText";
 import { useEffect } from "react";
 import { HtmlTags } from "../components/HtmlTags";
 // import UseOnScreen from "../hooks/UseOnScreen";
@@ -58,7 +57,7 @@ export default function Home() {
   }
 
   return (
-    <div key="home-page">
+    <>
       <Head key="home-page">
         <title>{`About Me || The Average Developer`}</title>
         <meta name="description" content="" />
@@ -67,15 +66,13 @@ export default function Home() {
       </Head>
       <div className="margin-left">
         {HtmlTags(`<h>`, "")}
-        {BouncingText("Hi, I'm", "subtitle")}
-        {BouncingText(data.intro, "title")}
+        {ElasticText("Hi, I'm", "subtitle")}
+        {ElasticText(data.intro, "title")}
         {HtmlTags(`</h>`, "")}
         <div className="d-flex flex-column">
           {HtmlTags(`<span>`, "")}
           {data.tagline.map((i, index) => {
-            return (
-              <div key={`${index}${i}`}>{BouncingText(i, "subtitle")}</div>
-            );
+            return <div key={`${index}${i}`}>{ElasticText(i, "subtitle")}</div>;
           })}
           {HtmlTags(`</span>`, "")}
         </div>
@@ -83,6 +80,6 @@ export default function Home() {
       {/* <div id={`${data.paths[0]}`} ref={aboutRef}>
         {aboutRefValue && <About />}
       </div> */}
-    </div>
+    </>
   );
 }

@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { data } from "../repository/DataRepository";
-import PageBody from "../components/PageBody";
 import { HtmlTags } from "../components/HtmlTags";
 import FallInTextEntry from "../components/FallInTextEntry";
 import Image from "next/image";

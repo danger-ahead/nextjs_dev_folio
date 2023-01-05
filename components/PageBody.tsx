@@ -1,23 +1,32 @@
+import Image from "next/image";
 import { ReactElement, JSXElementConstructor, ReactFragment } from "react";
+import { data } from "../repository/DataRepository";
+import { handleNavBarCollapse } from "../utils/NavBarCollapse";
 import { HtmlTags } from "./HtmlTags";
 import NavBar from "./NavBar";
 
 export default function PageBody(
   children:
     | ReactElement<any, string | JSXElementConstructor<any>>
-    | ReactFragment,
-  path: string
+    | ReactFragment
 ) {
   return (
-    <main className="d-flex flex-column mh-100p">
+    <main onClick={handleNavBarCollapse} className="d-flex flex-column mh-100p">
       {HtmlTags(`<html>`, "")}
       {HtmlTags(`<body>`, "margin-left")}
-      <div className="margin-left">{NavBar(path)}</div>
+      <div className="margin-left">{NavBar()}</div>
       <div className="margin-left d-flex flex-column justify-content-center flex-grow">
         {children}
       </div>
       {HtmlTags(`</body>`, "margin-left")}
       {HtmlTags(`</html>`, "")}
+      <a
+        className="position-fixed right-corner cursor-pointer text-decoration-none button-effect"
+        href={`mailto:${data.email}}`}
+      >
+        Email me!
+      </a>
+      <span className="position-fixed right-corner-line"></span>
     </main>
   );
 }

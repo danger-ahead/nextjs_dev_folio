@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { handleNavBarCollapse } from "../utils/NavBarCollapse";
 import PageBody from "./PageBody";
 
 export default function Transition({ children }: { children: any }) {
@@ -11,6 +12,7 @@ export default function Transition({ children }: { children: any }) {
 
   useEffect(() => {
     if (children !== displayChildren) {
+      handleNavBarCollapse();
       setTransitionStage("disappear");
     }
   }, [children, setDisplayChildren, displayChildren]);
@@ -27,8 +29,7 @@ export default function Transition({ children }: { children: any }) {
       {PageBody(
         <div onTransitionEnd={onTransitionEnd} className={transitionStage}>
           {displayChildren}
-        </div>,
-        children.type.name
+        </div>
       )}
     </div>
   );
