@@ -12,6 +12,12 @@
 body {
   background-color: var(--primary-color);
   margin: 0 8px;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+#__next {
+  height: 100%;
 }
 
 .cursive {

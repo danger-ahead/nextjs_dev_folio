@@ -59,7 +59,7 @@ export default function Home() {
   }
 
   return (
-    <div id="index-page">
+    <>
       <Head>
         <title>{`About Me || The Average Developer`}</title>
         <meta name="description" content="" />
@@ -87,6 +87,6 @@ export default function Home() {
       {/* <div id={`${data.paths[0]}`} ref={aboutRef}>
         {aboutRefValue && <About />}
       </div> */}
-    </div>
+    </>
   );
 }
