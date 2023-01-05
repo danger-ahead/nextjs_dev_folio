@@ -60,49 +60,47 @@ export default function Experience() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {PageBody(
-        <div key="experience-page">
-          <div className="d-flex flex-row justify-content-start align-items-center margin-left">
-            {HtmlTags(`<!--`, "white-space-nowrap")}
-            {FallInTextEntry(
-              "02. my experience",
-              "subtitle primary-font-color text-shadow"
-            )}
-            {HtmlTags(`-->`, "white-space-nowrap")}
-          </div>
-          <br></br>
-          <br></br>
-          <div className="d-flex experience align-items-start">
-            <div className="d-flex experience-selection-button-container justify-content-start margin-left primary-font-color text">
-              {data.experience.map((experience, index) => {
-                return (
-                  <div
-                    key={`${experience["company"]}${index}`}
-                    className="d-flex flex-row align-items-center justify-content-between cursor-pointer"
-                    role="button"
-                    onClick={() => setSelectedExperience(index)}
-                  >
-                    <div
-                      className={`d-flex experience-selection-button ${
-                        index === selectedExperience
-                          ? "secondary-font-color"
-                          : "primary-font-color"
-                      }`}
-                    >
-                      {HtmlTags("<button>", "white-space-nowrap")}
-                      <span className="text-small elasticOnHover">
-                        {experience["company"]}
-                      </span>
-                      {HtmlTags("</button>", "white-space-nowrap")}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-            {experiences[selectedExperience]}
-          </div>
+      <div key="experience-page">
+        <div className="d-flex flex-row justify-content-start align-items-center margin-left">
+          {HtmlTags(`<!--`, "white-space-nowrap")}
+          {FallInTextEntry(
+            "02. my experience",
+            "subtitle primary-font-color text-shadow"
+          )}
+          {HtmlTags(`-->`, "white-space-nowrap")}
         </div>
-      )}
+        <br></br>
+        <br></br>
+        <div className="d-flex experience align-items-start">
+          <div className="d-flex experience-selection-button-container justify-content-start margin-left primary-font-color text">
+            {data.experience.map((experience, index) => {
+              return (
+                <div
+                  key={`${experience["company"]}${index}`}
+                  className="d-flex flex-row align-items-center justify-content-between cursor-pointer"
+                  role="button"
+                  onClick={() => setSelectedExperience(index)}
+                >
+                  <div
+                    className={`d-flex experience-selection-button ${
+                      index === selectedExperience
+                        ? "secondary-font-color"
+                        : "primary-font-color"
+                    }`}
+                  >
+                    {HtmlTags("<button>", "white-space-nowrap")}
+                    <span className="text-small elasticOnHover">
+                      {experience["company"]}
+                    </span>
+                    {HtmlTags("</button>", "white-space-nowrap")}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          {experiences[selectedExperience]}
+        </div>
+      </div>
     </>
   );
 }

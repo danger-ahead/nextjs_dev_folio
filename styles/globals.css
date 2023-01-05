@@ -99,6 +99,10 @@ body {
   height: 100%;
 }
 
+.mh-100p {
+  min-height: 100%;
+}
+
 .overflow-y-auto {
   overflow-y: auto;
 }

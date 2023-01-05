@@ -15,25 +15,21 @@ export default function NavBar(selectedTab: string) {
       <nav className="margin-left d-flex navbar">
         <Link
           className={`text-small text-decoration-none ${
-            selected === "home-page"
-              ? "secondary-font-color"
-              : "primary-font-color"
+            selected === "Home" ? "secondary-font-color" : "primary-font-color"
           }`}
           href="/"
         >{`<home />`}</Link>
         <div className="navbar-gap"></div>
         <Link
           className={`text-small text-decoration-none ${
-            selected === "about-page"
-              ? "secondary-font-color"
-              : "primary-font-color"
+            selected === "About" ? "secondary-font-color" : "primary-font-color"
           }`}
           href="/about"
         >{`<about />`}</Link>
         <div className="navbar-gap"></div>
         <Link
           className={`text-small text-decoration-none ${
-            selected === "experience-page"
+            selected === "Experience"
               ? "secondary-font-color"
               : "primary-font-color"
           }`}
@@ -42,7 +38,7 @@ export default function NavBar(selectedTab: string) {
         <div className="navbar-gap"></div>
         <Link
           className={`text-small text-decoration-none ${
-            selected === "projects-page"
+            selected === "Projects"
               ? "secondary-font-color"
               : "primary-font-color"
           }`}
@@ -51,7 +47,7 @@ export default function NavBar(selectedTab: string) {
         <div className="navbar-gap"></div>
         <Link
           className={`text-small text-decoration-none ${
-            selected === "contact-page"
+            selected === "Contact"
               ? "secondary-font-color"
               : "primary-font-color"
           }`}

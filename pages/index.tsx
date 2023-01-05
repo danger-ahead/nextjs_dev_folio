@@ -58,33 +58,31 @@ export default function Home() {
   }
 
   return (
-    <>
-      <Head>
+    <div key="home-page">
+      <Head key="home-page">
         <title>{`About Me || The Average Developer`}</title>
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {PageBody(
-        <div key="home-page" className="margin-left">
-          {HtmlTags(`<h>`, "")}
-          {BouncingText("Hi, I'm", "subtitle")}
-          {BouncingText(data.intro, "title")}
-          {HtmlTags(`</h>`, "")}
-          <div className="d-flex flex-column">
-            {HtmlTags(`<span>`, "")}
-            {data.tagline.map((i, index) => {
-              return (
-                <div key={`${index}${i}`}>{BouncingText(i, "subtitle")}</div>
-              );
-            })}
-            {HtmlTags(`</span>`, "")}
-          </div>
+      <div className="margin-left">
+        {HtmlTags(`<h>`, "")}
+        {BouncingText("Hi, I'm", "subtitle")}
+        {BouncingText(data.intro, "title")}
+        {HtmlTags(`</h>`, "")}
+        <div className="d-flex flex-column">
+          {HtmlTags(`<span>`, "")}
+          {data.tagline.map((i, index) => {
+            return (
+              <div key={`${index}${i}`}>{BouncingText(i, "subtitle")}</div>
+            );
+          })}
+          {HtmlTags(`</span>`, "")}
         </div>
-      )}
+      </div>
       {/* <div id={`${data.paths[0]}`} ref={aboutRef}>
         {aboutRefValue && <About />}
       </div> */}
-    </>
+    </div>
   );
 }

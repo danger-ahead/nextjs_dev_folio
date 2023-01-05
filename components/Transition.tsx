@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import PageBody from "./PageBody";
 
 export default function Transition({ children }: { children: any }) {
   const [displayChildren, setDisplayChildren] = useState(children);
@@ -22,8 +23,13 @@ export default function Transition({ children }: { children: any }) {
   }
 
   return (
-    <div onTransitionEnd={onTransitionEnd} className={transitionStage}>
-      {displayChildren}
+    <div className="overflow-y-auto h-100p">
+      {PageBody(
+        <div onTransitionEnd={onTransitionEnd} className={transitionStage}>
+          {displayChildren}
+        </div>,
+        children.type.name
+      )}
     </div>
   );
 }
