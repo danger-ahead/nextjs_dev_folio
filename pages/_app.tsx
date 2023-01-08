@@ -4,6 +4,7 @@ import "../styles/component.fallintextentry.css";
 import "../styles/component.navbar.css";
 import "../styles/component.transition.css";
 import "../styles/pages.css";
+import "../styles/component.blinking.cursor.css";
 
 import type { AppProps } from "next/app";
 import Transition from "../components/Transition";

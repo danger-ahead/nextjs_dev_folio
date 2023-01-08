@@ -81,3 +81,23 @@
     margin-right: 10px;
   }
 }
+
+/* Contact Page  */
+@media screen and (max-width: 500px) {
+  .name-subject-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .message-container {
+    margin-top: 20px;
+  }
+
+  .message-btn-container {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .hire-me-btn {
+    margin-left: 14px;
+  }
+}

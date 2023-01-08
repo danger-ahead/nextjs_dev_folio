@@ -3,6 +3,7 @@
 
 :root {
   font-family: "JetBrains Mono", monospace;
+  --default-family: font-family: "JetBrains Mono", monospace;
   --primary-font-color: white;
   --secondary-font-color: #08fdd8;
   --primary-color: #1d1d1d;
@@ -31,6 +32,10 @@ a {
   font-family: "La Belle Aurore", cursive;
 }
 
+.default-font-family {
+  font-family: var(--default-family);
+}
+
 .title {
   /* https://websemantics.uk/tools/responsive-font-calculator/ */
   /* 50 to 80px; */
@@ -56,6 +61,30 @@ a {
 .text-small {
   /* 16 to 20px */
   font-size: calc(1rem + ((1vw - 7.68px) * 0.3472));
+}
+
+.margin-left-33px {
+  margin-left: 33px;
+}
+
+.margin-top-10px {
+  margin-top: 10px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.outline-0 {
+  outline:0
+}
+
+.border-0 {
+  border: 0
+}
+
+.bg-primary {
+  background-color: var(--primary-color);
 }
 
 .primary-font-color {
@@ -132,12 +161,47 @@ a {
   overflow-y: auto;
 }
 
+.margin-left-0 {
+  margin-left:0;
+}
+
 .margin-left {
-  margin-left: 3%;
+  margin-left: 3%; 
+  /* suggested change make the classname margin-left-3x   */
+}
+
+.margin-left-5x {
+  margin-left: 5%;
+}
+
+.margin-left-8x {
+  margin-left: 8%;
+}
+
+.margin-left-10x {
+  margin-left: 10%;
+}
+
+
+.margin-right-0 {
+  margin-right: 0;
+}
+
+.margin-top-0 {
+  margin-top: 0;
+}
+
+.margin-top-5x {
+  margin-top: 5%;
+}
+
+.margin-bottom-0 {
+  margin-bottom: 0;
 }
 
 .margin-right {
   margin-right: 3%;
+  /* suggested change make the classname margin-right-3x   */
 }
 
 .d-flex {
@@ -218,6 +282,14 @@ a {
 
 .white-space-nowrap {
   white-space: nowrap;
+}
+
+.outline-none {
+  outline:none;
+}
+
+.border-none {
+  border:none;
 }
 
 .opacity-1 {
