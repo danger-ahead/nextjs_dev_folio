@@ -75,14 +75,6 @@ a {
   cursor: pointer;
 }
 
-.outline-0 {
-  outline:0
-}
-
-.border-0 {
-  border: 0
-}
-
 .bg-primary {
   background-color: var(--primary-color);
 }
@@ -157,6 +149,14 @@ a {
   min-height: 100%;
 }
 
+.w-fc {
+  width: fit-content;
+}
+
+.w-90 {
+  width: 90vw;
+}
+
 .overflow-y-auto {
   overflow-y: auto;
 }
@@ -166,7 +166,7 @@ a {
 }
 
 .margin-left {
-  margin-left: 3%; 
+  margin-left: 3%;
   /* suggested change make the classname margin-left-3x   */
 }
 

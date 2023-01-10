@@ -8,15 +8,10 @@ import React, { useState } from "react";
 
 export default function Contact() {
   const [nameValue, setName] = useState<string>("");
-  const [messageValue, setMessage] = useState<string>("");
   const [subjectValue, setSubject] = useState<string>("");
 
   const handleNameChange = (e: React.FormEvent<HTMLInputElement>) => {
     setName(e.currentTarget.value);
-  };
-
-  const handleMessageChange = (e: React.FormEvent<HTMLTextAreaElement>) => {
-    setMessage(e.currentTarget.value);
   };
 
   const handleSubjectChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -25,85 +20,86 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    let mailstr: string = `mailto:${data.email}?subject=${subjectValue} &body=${messageValue}`;
-    window.open(mailstr, "about:blank");
+    // TODO: check if name and subject are empty
+    // TODO: mailto seems to be broken
+    let mailstr: string = `mailto:${data.email}?subject=${subjectValue} &body=${nameValue}\n\n`;
+    window.open(mailstr);
     setName("");
-    setMessage("");
     setSubject("");
   };
+
+  const inputNamePlaceholder = "<enter name />";
+  const inputSubjectPlaceholder = "<enter subject />";
+
   return (
     <>
       <Head>
-        <title>{`About Me || The Average Developer`}</title>
+        <title>{`Contact Me || The Average Developer`}</title>
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div key="about-page" className="d-flex about justify-content-start">
-        <div className="margin-left d-flex flex-column about-text">
-          <div className="d-flex flex-row align-items-center">
-            {HtmlTags(`<!--`, "white-space-nowrap")}
-            {FallInTextEntry(
-              "04. contact me",
-              "subtitle primary-font-color text-shadow"
-            )}
-            {HtmlTags(`-->`, "white-space-nowrap")}
-          </div>
-          <br></br>
-          {/* <br></br> */}
-          {HtmlTags(`<form>`, "white-space-nowrap")}
-          <br></br>
-          <form onSubmit={handleSubmit}>
-            <div className="d-flex name-subject-container">
-              <div className="">
-                <div className="d-flex ">
-                  {nameValue && <BlinkingCursor />}
-                  <input
-                    placeholder="<Enter Name  />"
-                    className="d-block margin-left bg-primary outline-none border-none default-font-family primary-font-color"
-                    value={nameValue}
-                    onChange={handleNameChange}
-                    type={"text"}
-                  />
-                </div>
-              </div>
-              <div className="">
-                <div className="d-flex ">
-                  {subjectValue && <BlinkingCursor />}
-                  <input
-                    placeholder="<Enter Subject  />"
-                    className="d-block margin-left bg-primary outline-none border-none default-font-family primary-font-color"
-                    value={subjectValue}
-                    onChange={handleSubjectChange}
-                    type={"text"}
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="d-flex message-btn-container">
-              <div className="d-flex margin-left-3x margin-top-5x message-container">
-                {messageValue && <BlinkingCursor width={"11px"} />}
-                <textarea
-                  placeholder="<Enter Message  />"
-                  className="d-block margin-left bg-primary outline-none border-none default-font-family primary-font-color"
-                  rows={1}
-                  value={messageValue}
-                  onChange={handleMessageChange}
-                />
-              </div>
-              <button
-                className={`text-small text-decoration-none primary-font-color button-effect bg-primary default-font-family outline-0 border-0 cursor-pointer margin-left-33px margin-top-10px hire-me-btn`}
-                type={"submit"}
-              >
-                {HtmlTags("<", "secondary-font-color")}
-                hire me
-                {HtmlTags("/>", "secondary-font-color")}
-              </button>
-            </div>
-          </form>
-          <br></br>
-          {HtmlTags(`</form>`, "white-space-nowrap")}
+      <div className="margin-left d-flex flex-column margin-right">
+        <div className="d-flex flex-row align-items-center">
+          {HtmlTags(`<!--`, "white-space-nowrap")}
+          {FallInTextEntry(
+            "04. contact me",
+            "subtitle primary-font-color text-shadow"
+          )}
+          {HtmlTags(`-->`, "white-space-nowrap")}
         </div>
+        <br></br>
+        {HtmlTags(`<form>`, "white-space-nowrap")}
+        <br></br>
+        <form
+          className="d-flex flex-column contact-page-form"
+          onSubmit={handleSubmit}
+        >
+          <div className="d-flex flex-row">
+            <input
+              placeholder="<Enter Name  />"
+              className="d-block margin-left bg-primary outline-none border-none default-font-family primary-font-color"
+              value={nameValue}
+              onChange={handleNameChange}
+              type={"text"}
+              style={{
+                width: `${
+                  nameValue.length === 0
+                    ? inputNamePlaceholder.length
+                    : nameValue.length
+                }ch`,
+              }}
+            />
+            {nameValue && <BlinkingCursor id={"blinking-cursor-name"} />}
+          </div>
+          <div className="d-flex flex-row">
+            <input
+              placeholder="<Enter Subject />"
+              className="d-block margin-left bg-primary outline-none border-none default-font-family primary-font-color"
+              value={subjectValue}
+              onChange={handleSubjectChange}
+              type={"text"}
+              style={{
+                width: `${
+                  subjectValue.length === 0
+                    ? inputSubjectPlaceholder.length
+                    : subjectValue.length
+                }ch`,
+              }}
+            />
+            {subjectValue && <BlinkingCursor id={"blinking-cursor-subject"} />}
+          </div>
+          <button
+            className={`text-small text-decoration-none primary-font-color button-effect bg-primary default-font-family outline-none border-none cursor-pointer margin-top-10px margin-left w-fc`}
+            type={"submit"}
+          >
+            {HtmlTags("<", "secondary-font-color")}
+            hire me
+            {HtmlTags("/>", "secondary-font-color")}
+          </button>
+        </form>
+        <br></br>
+        {HtmlTags(`</form>`, "white-space-nowrap")}
       </div>
     </>
   );
