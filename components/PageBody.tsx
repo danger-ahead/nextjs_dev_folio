@@ -20,13 +20,15 @@ export default function PageBody(
       </div>
       {HtmlTags(`</body>`, "margin-left")}
       {HtmlTags(`</html>`, "")}
-      <a
-        className="position-fixed right-corner cursor-pointer text-decoration-none button-effect"
-        href={`mailto:${data.email}}`}
-      >
-        Email me!
-      </a>
-      <span className="position-fixed right-corner-line"></span>
+      <div className="position-fixed d-flex flex-row align-items-center right-corner button-effect">
+        <a
+          className="right-corner-button cursor-pointer text-decoration-none button-effect"
+          href={`mailto:${data.email}}`}
+        >
+          Email me!
+        </a>
+        <span className="right-corner-line"></span>
+      </div>
     </main>
   );
 }

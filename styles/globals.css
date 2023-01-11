@@ -97,20 +97,19 @@ a {
 
 .right-corner {
   transform: rotate(90deg);
-  right: 13px;
-  bottom: 10%;
+  right: 0px;
+  bottom: 6%;
 }
 
 .right-corner-line {
-  bottom: 0%;
-  right: 55px;
-  height: 60px;
-  width: 1px;
+  margin-left: 10px;
+  height: 1px;
+  width: 60px;
   background-color: var(--primary-font-color);
 }
 
 @media screen and (max-width: 900px) {
-  .right-corner,
+  .right-corner-button,
   .right-corner-line {
     display: none;
   }
