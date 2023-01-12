@@ -91,3 +91,10 @@
 .contact-page-form input::placeholder {
   color: var(--primary-font-color);
 }
+
+@media screen and (max-width: 767px) {
+  .social-buttons {
+    width: calc(2.125rem + ((1vw - 3px) * 1.2848));
+    height: auto;
+  }
+}

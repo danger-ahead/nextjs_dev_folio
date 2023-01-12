@@ -1,4 +1,4 @@
-import { keyable } from "./Keyable";
+import { keyable, map } from "./DataTypes";
 
 export type Data = {
   intro: String;
@@ -8,4 +8,5 @@ export type Data = {
   tagline: String[];
   bio: String[];
   experience: keyable[];
+  socials: map;
 };

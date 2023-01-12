@@ -15,7 +15,7 @@ export default function PageBody(
       {HtmlTags(`<html>`, "")}
       {HtmlTags(`<body>`, "margin-left")}
       <div className="margin-left">{NavBar()}</div>
-      <div className="margin-left d-flex flex-column justify-content-center flex-grow">
+      <div className="margin-left d-flex flex-column justify-content-center flex-grow margin-top-2p margin-bottom-2p margin-right">
         {children}
       </div>
       {HtmlTags(`</body>`, "margin-left")}
@@ -23,7 +23,7 @@ export default function PageBody(
       <div className="position-fixed d-flex flex-row align-items-center right-corner button-effect">
         <a
           className="right-corner-button cursor-pointer text-decoration-none button-effect"
-          href={`mailto:${data.email}}`}
+          href={`mailto:${data.email}`}
         >
           Email me!
         </a>

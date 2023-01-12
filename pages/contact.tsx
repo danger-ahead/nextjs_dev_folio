@@ -3,103 +3,89 @@ import { data } from "../repository/DataRepository";
 import { HtmlTags } from "../components/HtmlTags";
 import FallInTextEntry from "../components/FallInTextEntry";
 import Image from "next/image";
-import BlinkingCursor from "../components/BlinkingCursor";
-import React, { useState } from "react";
+import React from "react";
+import linkedin from "../public/images/linkedin.webp";
+import github from "../public/images/github.webp";
+import instagram from "../public/images/instagram.webp";
+import twitter from "../public/images/twitter.webp";
+import stackoverflow from "../public/images/stackoverflow.webp";
 
 export default function Contact() {
-  const [nameValue, setName] = useState<string>("");
-  const [subjectValue, setSubject] = useState<string>("");
+  const socialButtons = [];
 
-  const handleNameChange = (e: React.FormEvent<HTMLInputElement>) => {
-    setName(e.currentTarget.value);
-  };
-
-  const handleSubjectChange = (e: React.FormEvent<HTMLInputElement>) => {
-    setSubject(e.currentTarget.value);
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // TODO: check if name and subject are empty
-    // TODO: mailto seems to be broken
-    let mailstr: string = `mailto:${data.email}?subject=${subjectValue} &body=${nameValue}\n\n`;
-    window.open(mailstr);
-    setName("");
-    setSubject("");
-  };
-
-  const inputNamePlaceholder = "<enter name />";
-  const inputSubjectPlaceholder = "<enter subject />";
+  for (let i = 0; i < Object.keys(data.socials).length; i++) {
+    const src = Object.keys(data.socials)[i];
+    socialButtons.push(
+      <a
+        className="margin-right"
+        key={src}
+        href={`${data.socials[src]}`}
+        target="_blank"
+        rel="noreferrer"
+      >
+        <Image
+          className="cursor-pointer social-buttons button-effect"
+          src={
+            src === "linkedin"
+              ? linkedin
+              : src === "github"
+              ? github
+              : src === "instagram"
+              ? instagram
+              : src === "stackoverflow"
+              ? stackoverflow
+              : twitter
+          }
+          width={40}
+          height={40}
+          alt={src}
+        />
+      </a>
+    );
+  }
 
   return (
     <>
       <Head>
-        <title>{`Contact Me || The Average Developer`}</title>
+        <title>{`Get in touch`}</title>
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="margin-left d-flex flex-column margin-right">
+      <div className="margin-left d-flex flex-column">
         <div className="d-flex flex-row align-items-center">
           {HtmlTags(`<!--`, "white-space-nowrap")}
           {FallInTextEntry(
-            "04. contact me",
-            "subtitle primary-font-color text-shadow"
+            "04. get in touch",
+            "subtitle secondary-font-color text-shadow"
           )}
           {HtmlTags(`-->`, "white-space-nowrap")}
         </div>
-        <br></br>
-        {HtmlTags(`<form>`, "white-space-nowrap")}
-        <br></br>
-        <form
-          className="d-flex flex-column contact-page-form"
-          onSubmit={handleSubmit}
-        >
-          <div className="d-flex flex-row">
-            <input
-              placeholder="<Enter Name  />"
-              className="d-block margin-left bg-primary outline-none border-none default-font-family primary-font-color"
-              value={nameValue}
-              onChange={handleNameChange}
-              type={"text"}
-              style={{
-                width: `${
-                  nameValue.length === 0
-                    ? inputNamePlaceholder.length
-                    : nameValue.length
-                }ch`,
-              }}
-            />
-            {nameValue && <BlinkingCursor id={"blinking-cursor-name"} />}
-          </div>
-          <div className="d-flex flex-row">
-            <input
-              placeholder="<Enter Subject />"
-              className="d-block margin-left bg-primary outline-none border-none default-font-family primary-font-color"
-              value={subjectValue}
-              onChange={handleSubjectChange}
-              type={"text"}
-              style={{
-                width: `${
-                  subjectValue.length === 0
-                    ? inputSubjectPlaceholder.length
-                    : subjectValue.length
-                }ch`,
-              }}
-            />
-            {subjectValue && <BlinkingCursor id={"blinking-cursor-subject"} />}
-          </div>
-          <button
-            className={`text-small text-decoration-none primary-font-color button-effect bg-primary default-font-family outline-none border-none cursor-pointer margin-top-10px margin-left w-fc`}
-            type={"submit"}
+        {HtmlTags("<span>", "margin-top-2p")}
+        <span className="margin-left margin-right primary-font-color">
+          I’m currently looking for new opportunities, and my inbox is always
+          open. Whether you have a question or just want to say hi, I’ll get
+          back to you!
+        </span>
+        {HtmlTags("</span>", "margin-bottom-2p")}
+        {HtmlTags("<button>", "")}
+        <span className="d-flex flex-row margin-left">
+          {HtmlTags("onClick={() => {", "")}
+          <a
+            className="primary-font-color button-effect text-decoration-none"
+            href={`mailto:${data.email}`}
           >
-            {HtmlTags("<", "secondary-font-color")}
-            hire me
-            {HtmlTags("/>", "secondary-font-color")}
-          </button>
-        </form>
-        <br></br>
-        {HtmlTags(`</form>`, "white-space-nowrap")}
+            say hi!
+          </a>
+          {HtmlTags("} }", "")}
+        </span>
+        {HtmlTags("</button>", "margin-bottom-2p")}
+        {HtmlTags(`<link`, "white-space-nowrap")}
+        <div className="margin-left d-flex flex-row align-items-center">
+          {HtmlTags(`href=`, "white-space-nowrap margin-right")}
+          {socialButtons}
+        </div>
+        {HtmlTags(`>`, "white-space-nowrap")}
       </div>
     </>
   );
