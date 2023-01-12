@@ -72,7 +72,7 @@ export default function Contact() {
         <span className="d-flex flex-row margin-left">
           {HtmlTags("onClick={() => {", "")}
           <a
-            className="primary-font-color button-effect text-decoration-none"
+            className="primary-font-color button-effect text-decoration-none text"
             href={`mailto:${data.email}`}
           >
             say hi!
