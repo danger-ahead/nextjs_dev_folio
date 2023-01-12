@@ -27,7 +27,7 @@ export default function About() {
             {HtmlTags(`<!--`, "white-space-nowrap")}
             {FallInTextEntry(
               "01. about me",
-              "subtitle primary-font-color text-shadow"
+              "subtitle secondary-font-color text-shadow"
             )}
             {HtmlTags(`-->`, "white-space-nowrap")}
           </div>

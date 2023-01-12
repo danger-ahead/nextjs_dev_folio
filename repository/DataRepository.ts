@@ -10,5 +10,6 @@ export const data: Data = {
   experience: dataFromJson.experience,
   email: dataFromJson.email,
   githubUserID: dataFromJson.githubUserID,
-  repos: dataFromJson.repos
+  repos: dataFromJson.repos,
+  socials: dataFromJson.socials,
 };

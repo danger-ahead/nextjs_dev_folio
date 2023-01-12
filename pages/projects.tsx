@@ -27,13 +27,9 @@ function Projects(): JSX.Element {
   };
   useEffect(() => {
     let arrOfPromises: any[] = [];
-    console.log(repoURLs);
     repoURLs.forEach((element) => {
       arrOfPromises.push(getProjectData(element));
     });
-    
-    
-
     Promise.all(arrOfPromises).then((values) => {
       console.log(values);
     });

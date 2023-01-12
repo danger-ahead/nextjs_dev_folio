@@ -65,7 +65,7 @@ export default function Experience() {
           {HtmlTags(`<!--`, "white-space-nowrap")}
           {FallInTextEntry(
             "02. my experience",
-            "subtitle primary-font-color text-shadow"
+            "subtitle secondary-font-color text-shadow"
           )}
           {HtmlTags(`-->`, "white-space-nowrap")}
         </div>

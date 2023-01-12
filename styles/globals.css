@@ -209,8 +209,12 @@ a {
   margin-top: 0;
 }
 
-.margin-top-5x {
-  margin-top: 5%;
+.margin-top-2p {
+  margin-top: 2%;
+}
+
+.margin-bottom-2p {
+  margin-bottom: 2%;
 }
 
 .margin-bottom-0 {
