@@ -47,8 +47,8 @@ a {
 }
 
 .cursive {
-  /* font-family: "La Belle Aurore", cursive; */
-  font-family: var(--tag-font-family);
+  font-family: "La Belle Aurore", cursive;
+
 }
 
 .default-font-family {
