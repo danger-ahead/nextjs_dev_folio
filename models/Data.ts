@@ -8,4 +8,6 @@ export type Data = {
   tagline: String[];
   bio: String[];
   experience: keyable[];
+  githubUserID: string;
+  repos : string []
 };

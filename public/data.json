@@ -20,5 +20,7 @@
       "duration": "May 2022 - Present",
       "description": "Managing team of student developers and organised events for the club. Also worked on the club website and database."
     }
-  ]
+  ],
+  "githubUserID" :"danger-ahead",
+  "repos" : ["flutter_dev_folio","simple_chips_input","roBOT"]
 }

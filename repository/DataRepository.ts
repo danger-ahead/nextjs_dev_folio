@@ -9,4 +9,6 @@ export const data: Data = {
   bio: dataFromJson.bio,
   experience: dataFromJson.experience,
   email: dataFromJson.email,
+  githubUserID: dataFromJson.githubUserID,
+  repos: dataFromJson.repos
 };
