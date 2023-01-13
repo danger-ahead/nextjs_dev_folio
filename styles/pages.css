@@ -92,9 +92,60 @@
   color: var(--primary-font-color);
 }
 
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 15px;
+}
+
 @media screen and (max-width: 767px) {
   .social-buttons {
     width: calc(2.125rem + ((1vw - 3px) * 1.2848));
     height: auto;
   }
+}
+.project-card-container {
+  display: flex;
+  padding: 0rem 1.75rem;
+  flex-direction: column;
+  align-items: flex-start;
+  color: white;
+}
+
+.project-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.popularity-count {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.fork-count {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+}
+
+.star-count {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+}
+
+.project-links {
+  display: flex;
+  align-items: center;
+}
+
+.project-tech-topics {
+  list-style: none;
+  padding: inherit;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }

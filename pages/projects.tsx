@@ -1,4 +1,8 @@
+import Head from "next/head";
 import React, { useEffect, useState } from "react";
+import FallInTextEntry from "../components/FallInTextEntry";
+import { HtmlTags } from "../components/HtmlTags";
+import Card from "../components/ProjectCard";
 import { data } from "../repository/DataRepository";
 import { repoURLs } from "../utils/Constants";
 
@@ -9,9 +13,10 @@ type projectDataArr = {
   forks?: number;
   forks_count?: number;
   html_url?: string;
-  homepage?: string | null;
+  homepage?: string | URL | undefined;
   language?: string;
   open_issues?: number;
+  topics?: any[] | null;
 };
 
 function Projects(): JSX.Element {
@@ -31,11 +36,46 @@ function Projects(): JSX.Element {
       arrOfPromises.push(getProjectData(element));
     });
     Promise.all(arrOfPromises).then((values) => {
-      console.log(values);
+      setProjectArr(values);
     });
   }, []);
 
-  return <div>projects</div>;
+  return (
+    <>
+      <Head>
+        <title>{`Projects`}</title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div className="margin-left d-flex flex-column">
+        <div className="d-flex flex-row align-items-center">
+          {HtmlTags(`<!--`, "white-space-nowrap")}
+          {FallInTextEntry(
+            "03. Projects",
+            "subtitle secondary-font-color text-shadow"
+          )}
+          {HtmlTags(`-->`, "white-space-nowrap")}
+        </div>
+        <div className="projects-container">
+          {projectDataArr.map((item, index) => {
+            return (
+              <Card
+                key={index}
+                name={item.name}
+                description={item.description}
+                star_gazers={item.star_gazers}
+                topics={item.topics}
+                html_url={item.html_url}
+                homepage={item.homepage}
+                forks_count={item.forks_count}
+              />
+            );
+          })}
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default Projects;
