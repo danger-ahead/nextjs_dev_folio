@@ -18,10 +18,10 @@
 
 :root {
   font-family: "JetBrains Mono", monospace;
-  --default-family: "JetBrains Mono", monospace;
   --primary-font-color: white;
   --secondary-font-color: #08fdd8;
   --primary-color: #1d1d1d;
+  --primary-color-light-shade: #222222;
   --secondary-color: #515152;
   --tag-font-family: "Messapia-Regular", monospace;
   --tag-font-family-1: "Cascadia";
@@ -47,10 +47,6 @@ a {
 
 .cursive {
   font-family: "La Belle Aurore", cursive;
-}
-
-.default-font-family {
-  font-family: var(--default-family);
 }
 
 .title {
@@ -153,10 +149,6 @@ a {
   height: 100vh;
 }
 
-.mh-100 {
-  min-height: 100vh;
-}
-
 .h-100p {
   height: 100%;
 }
@@ -169,41 +161,16 @@ a {
   width: fit-content;
 }
 
-.w-90 {
-  width: 90vw;
+.w-100p {
+  width: 100%;
 }
 
 .overflow-y-auto {
   overflow-y: auto;
 }
 
-.margin-left-0 {
-  margin-left: 0;
-}
-
 .margin-left {
   margin-left: 3%;
-  /* suggested change make the classname margin-left-3x   */
-}
-
-.margin-left-5x {
-  margin-left: 5%;
-}
-
-.margin-left-8x {
-  margin-left: 8%;
-}
-
-.margin-left-10x {
-  margin-left: 10%;
-}
-
-.margin-right-0 {
-  margin-right: 0;
-}
-
-.margin-top-0 {
-  margin-top: 0;
 }
 
 .margin-top-2p {
@@ -214,17 +181,16 @@ a {
   margin-bottom: 2%;
 }
 
-.margin-bottom-0 {
-  margin-bottom: 0;
-}
-
 .margin-right {
   margin-right: 3%;
-  /* suggested change make the classname margin-right-3x   */
 }
 
 .d-flex {
   display: flex;
+}
+
+.d-grid {
+  display: grid;
 }
 
 .flex-column {
@@ -247,16 +213,8 @@ a {
   justify-content: flex-start;
 }
 
-.justify-content-end {
-  justify-content: flex-end;
-}
-
 .justify-content-between {
   justify-content: space-between;
-}
-
-.justify-content-around {
-  justify-content: space-around;
 }
 
 .align-items-center {
@@ -267,24 +225,12 @@ a {
   align-items: flex-start;
 }
 
-.align-items-end {
-  align-items: flex-end;
-}
-
 .position-absolute {
   position: absolute;
 }
 
 .position-fixed {
   position: fixed;
-}
-
-.right-0 {
-  right: 0;
-}
-
-.top-0 {
-  top: 0;
 }
 
 .text-decoration-none {
@@ -295,20 +241,12 @@ a {
   border: none;
 }
 
-.bg-transparent {
-  background-color: transparent;
-}
-
 .white-space-nowrap {
   white-space: nowrap;
 }
 
 .outline-none {
   outline: none;
-}
-
-.border-none {
-  border: none;
 }
 
 .opacity-1 {
@@ -347,4 +285,8 @@ a {
 
 .d-block {
   display: block;
+}
+
+.gap-2px {
+  gap: 2px;
 }

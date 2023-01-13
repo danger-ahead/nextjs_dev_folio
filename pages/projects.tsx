@@ -3,7 +3,10 @@ import React, { useEffect, useState } from "react";
 import FallInTextEntry from "../components/FallInTextEntry";
 import { HtmlTags } from "../components/HtmlTags";
 import Card from "../components/ProjectCard";
-import { data } from "../repository/DataRepository";
+import {
+  addAnimationClass,
+  removeAnimationClass,
+} from "../utils/CommonFunctions";
 import { repoURLs } from "../utils/Constants";
 
 type projectDataArr = {
@@ -30,20 +33,33 @@ function Projects(): JSX.Element {
       return error;
     }
   };
+
   useEffect(() => {
     let arrOfPromises: any[] = [];
+
     repoURLs.forEach((element) => {
       arrOfPromises.push(getProjectData(element));
     });
+
     Promise.all(arrOfPromises).then((values) => {
       setProjectArr(values);
     });
+
+    const toAnimate = 2;
+    const addAnimationClassReturn = addAnimationClass({ animate: 4 });
+
+    return () => {
+      clearInterval(addAnimationClassReturn.interval);
+      for (let i = 0; i < toAnimate; i++) {
+        removeAnimationClass({ index: addAnimationClassReturn.index[i] });
+      }
+    };
   }, []);
 
   return (
     <>
       <Head>
-        <title>{`Projects`}</title>
+        <title>Projects</title>
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -52,12 +68,12 @@ function Projects(): JSX.Element {
         <div className="d-flex flex-row align-items-center">
           {HtmlTags(`<!--`, "white-space-nowrap")}
           {FallInTextEntry(
-            "03. Projects",
+            "03. my projects",
             "subtitle secondary-font-color text-shadow"
           )}
           {HtmlTags(`-->`, "white-space-nowrap")}
         </div>
-        <div className="projects-container">
+        <div className="d-grid projects-container margin-top-2p">
           {projectDataArr.map((item, index) => {
             return (
               <Card

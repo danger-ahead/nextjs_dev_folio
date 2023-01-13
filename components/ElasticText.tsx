@@ -13,7 +13,5 @@ export default function ElasticText(data: String, cssClass: String) {
     }
   }
 
-  return (
-    <div className="d-flex flex-row margin-left margin-right">{element}</div>
-  );
+  return <div className="d-flex flex-row">{element}</div>;
 }

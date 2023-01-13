@@ -3,6 +3,10 @@ import { data } from "../repository/DataRepository";
 import ElasticText from "../components/ElasticText";
 import { useEffect } from "react";
 import { HtmlTags } from "../components/HtmlTags";
+import {
+  addAnimationClass,
+  removeAnimationClass,
+} from "../utils/CommonFunctions";
 // import UseOnScreen from "../hooks/UseOnScreen";
 
 export default function Home() {
@@ -10,51 +14,16 @@ export default function Home() {
   // const aboutRefValue = UseOnScreen(aboutRef);
 
   useEffect(() => {
-    // set an interval to animate the elements
-    const elements = document.getElementsByClassName("elastic");
+    const toAnimate = 4;
+    const addAnimationClassReturn = addAnimationClass({ animate: 4 });
 
-    // variables to store the random indexes of the elements that we will animate
-    var index1: number, index2: number, index3: number, index4: number;
-    const interval = setInterval(() => {
-      try {
-        // get random indexes
-        index1 = Math.floor(Math.random() * (elements.length - 0));
-        index2 = Math.floor(Math.random() * (elements.length - 0));
-        index3 = Math.floor(Math.random() * (elements.length - 0));
-        index4 = Math.floor(Math.random() * (elements.length - 0));
-
-        // add the animation class to the elements
-        elements[index1].classList.add("elasticAnimate");
-        removeClass(index1); // remove the animation class after 1 second
-        elements[index2].classList.add("elasticAnimate");
-        removeClass(index2);
-        elements[index3].classList.add("elasticAnimate");
-        removeClass(index3);
-        elements[index4].classList.add("elasticAnimate");
-        removeClass(index4);
-      } catch {
-        console.error("Error animating elements");
-      }
-    }, 1000);
     return () => {
-      clearInterval(interval);
-      removeClass(index1);
-      removeClass(index2);
-      removeClass(index3);
-      removeClass(index4);
+      clearInterval(addAnimationClassReturn.interval);
+      for (let i = 0; i < toAnimate; i++) {
+        removeAnimationClass({ index: addAnimationClassReturn.index[i] });
+      }
     };
   }, []);
-
-  function removeClass(index: number) {
-    setTimeout(() => {
-      const elements = document.getElementsByClassName("elastic");
-      try {
-        elements[index].classList.remove("elasticAnimate");
-      } catch {
-        console.error("Error removing animation class");
-      }
-    }, 1000);
-  }
 
   return (
     <>
@@ -64,15 +33,21 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="margin-left">
+      <div className="d-flex flex-column margin-left">
         {HtmlTags(`<h>`, "")}
-        {ElasticText("Hi, I'm", "subtitle")}
-        {ElasticText(data.intro, "title")}
+        <span className="margin-left">
+          {ElasticText("Hi, I'm", "subtitle")}
+        </span>
+        <span className="margin-left">{ElasticText(data.intro, "title")}</span>
         {HtmlTags(`</h>`, "")}
         <div className="d-flex flex-column">
           {HtmlTags(`<span>`, "")}
           {data.tagline.map((i, index) => {
-            return <div key={`${index}${i}`}>{ElasticText(i, "subtitle")}</div>;
+            return (
+              <div className="margin-left" key={`${index}${i}`}>
+                {ElasticText(i, "subtitle")}
+              </div>
+            );
           })}
           {HtmlTags(`</span>`, "")}
         </div>

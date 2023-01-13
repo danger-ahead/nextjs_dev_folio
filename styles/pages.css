@@ -92,10 +92,22 @@
   color: var(--primary-font-color);
 }
 
+/* projects page */
 .projects-container {
-  display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 15px;
+}
+
+.project-card {
+  padding: 5px 10px;
+  background-color: var(--primary-color-light-shade);
+  border-radius: 5px;
+  transition: all 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 @media screen and (max-width: 767px) {
@@ -104,48 +116,10 @@
     height: auto;
   }
 }
-.project-card-container {
-  display: flex;
-  padding: 0rem 1.75rem;
-  flex-direction: column;
-  align-items: flex-start;
-  color: white;
-}
-
-.project-top {
-  display: flex;
-  justify-content: space-between;
-}
-
-.popularity-count {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-.fork-count {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 2px;
-}
-
-.star-count {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 2px;
-}
-
-.project-links {
-  display: flex;
-  align-items: center;
-}
 
 .project-tech-topics {
   list-style: none;
   padding: inherit;
-  display: flex;
   gap: 10px;
   flex-wrap: wrap;
 }
