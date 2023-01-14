@@ -98,6 +98,24 @@
   gap: 15px;
 }
 
+@media  screen and (max-width:440px) {
+  .projects-container {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+  .project-description {
+    word-break: break-word;
+  }
+}
+
+@media  screen and (max-width:335px) {
+  .projects-container {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+  .project-section-container {
+    margin-left: 0;
+  }
+}
+
 .project-card {
   padding: 5px 10px;
   background-color: var(--primary-color-light-shade);

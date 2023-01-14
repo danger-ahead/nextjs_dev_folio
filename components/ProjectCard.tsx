@@ -66,7 +66,7 @@ const Card = (props: ProjectCardProps) => {
           </div>
         </div>
         {ElasticText(`${props.name}`, "text")}
-        <p>{props.description}</p>
+        <p className="project-description" >{props.description}</p>
         <div className="project-footer">
           <ul className="project-tech-topics d-flex">
             {props.topics?.map((item, index) => {
