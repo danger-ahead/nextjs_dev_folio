@@ -59,6 +59,22 @@ export default function Home() {
           })}
           {HtmlTags(`</span>`, "")}
         </div>
+        <div className="mobile-resume-block">
+          {HtmlTags(`<a`, "")}
+          <span className="d-flex flex-row margin-left align-items-center">
+            {HtmlTags(`href="`, "")}
+            <a
+              className="w-fc cursor-pointer text-decoration-none button-effect"
+              href={data.resume}
+              target="_blank"
+              rel="noreferrer"
+            >
+              My Resume!
+            </a>
+            {HtmlTags(`" >`, "")}
+          </span>
+          {HtmlTags(`</a>`, "")}
+        </div>
       </div>
       {/* <div id={`${data.paths[0]}`} ref={aboutRef}>
         {aboutRefValue && <About />}

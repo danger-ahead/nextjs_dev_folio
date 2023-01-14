@@ -1,24 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,200;0,400;0,500;0,700;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=La+Belle+Aurore&display=swap");
 
-@font-face {
-  font-family: "Messapia-Regular";
-  src: url("/fonts/Messapia/Messapia-Regular");
-  /* font-weight: normal;
-	font-style: normal;
-	font-display: swap; */
-}
-@font-face {
-  font-family: "Cascadia";
-  src: local("Cascadia"), url("/fonts/Cascadia/Cascadia.ttf") format("truetype");
-  /* font-weight: normal;
-	font-style: normal;
-	font-display: swap; */
-}
-
 :root {
   font-family: "JetBrains Mono", monospace;
   --primary-font-color: white;
+  --primary-font-color-darker: #a0a0a0;
   --secondary-font-color: #08fdd8;
   --primary-color: #1d1d1d;
   --primary-color-light-shade: #222222;
@@ -98,6 +84,10 @@ a {
 
 .secondary-font-color {
   color: var(--secondary-font-color) !important;
+}
+
+.primary-font-color-darker {
+  color: var(--primary-font-color-darker);
 }
 
 .secondary {

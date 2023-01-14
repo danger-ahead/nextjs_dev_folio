@@ -10,6 +10,8 @@ import instagram from "../public/images/instagram.webp";
 import twitter from "../public/images/twitter.webp";
 import stackoverflow from "../public/images/stackoverflow.webp";
 import { ProjectDataArr } from "../models/DataTypes";
+import fork from "../public/images/fork.webp";
+import star from "../public/images/star.webp";
 
 export default function Contact() {
   const socialButtons = [];
@@ -50,7 +52,7 @@ export default function Contact() {
   useEffect(() => {
     try {
       fetch(
-        `${process.env.NEXT_PUBLIC_REPO_STATS_URL}api/gh_repo?owner=danger-ahead&repo=nextjsdevfolio`
+        `${process.env.NEXT_PUBLIC_REPO_STATS_URL}api/gh_repo?owner=danger-ahead&repo=nextjs_dev_folio`
       ).then((res) => {
         res.json().then((data) => {
           setTemplateData(data);
@@ -106,6 +108,40 @@ export default function Contact() {
           {socialButtons}
         </div>
         {HtmlTags(`>`, "white-space-nowrap")}
+        {templateData?.name == undefined ? <></> : HtmlTags("<template>", "")}
+        <div
+          style={{
+            display: templateData?.name == undefined ? "none" : "block",
+          }}
+          className="margin-left"
+        >
+          <a
+            href={templateData?.html_url}
+            target="_blank"
+            className="primary-font-color text text-decoration-none button-effect"
+            rel="noreferrer"
+          >
+            {templateData?.name}
+          </a>
+          <div style={{ gap: "10px" }} className="d-flex align-items-center">
+            <a
+              className="d-flex flex-row align-items-center gap-2px text-decoration-none button-effect"
+              href={`${templateData?.html_url}/fork`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Image src={fork} alt="fork" className="fork-image d-block" />
+              <span>{templateData?.forks_count}</span>
+            </a>
+            <div className="d-flex gap-2px align-items-center">
+              <Image src={star} alt="" className="star-image d-block" />
+              <p className="star-count primary-font-color">
+                {templateData?.star_gazers}
+              </p>
+            </div>
+          </div>
+        </div>
+        {templateData?.name == undefined ? <></> : HtmlTags("</template>", "")}
       </div>
     </>
   );
