@@ -17,9 +17,14 @@ export default function About() {
     <>
       <Head>
         <title>{`About ${data.intro.split(" ")[0]}`}</title>
-        <meta name="description" content="" />
+        <meta name="description" content={`Everything about ${data.intro}`} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="preconnect"
+          href="https://fonts.googleapis.com"
+          crossOrigin="true"
+        />
       </Head>
       <div key="about-page" className="d-flex about justify-content-start">
         <div className="margin-left d-flex flex-column about-text">

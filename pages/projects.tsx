@@ -53,9 +53,17 @@ function Projects(): JSX.Element {
     <>
       <Head>
         <title>{`${data.intro.split(" ")[0]}'s Projects`}</title>
-        <meta name="description" content="" />
+        <meta
+          name="description"
+          content={`Projects that ${data.intro} has previously worked on`}
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="preconnect"
+          href="https://fonts.googleapis.com"
+          crossOrigin="true"
+        />
       </Head>
       <div className="margin-left d-flex flex-column">
         <div className="d-flex flex-row align-items-center">

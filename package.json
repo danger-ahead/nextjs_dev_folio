@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "NEXT_PUBLIC_REPO_STATS_URL='http://localhost:8000/' next dev",
+    "build": "NEXT_PUBLIC_REPO_STATS_URL='https://serverless-api.vercel.app/' next build",
     "start": "next start",
     "lint": "next lint"
   },

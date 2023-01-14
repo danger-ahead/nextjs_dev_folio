@@ -29,9 +29,17 @@ export default function Home() {
     <>
       <Head key="home-page">
         <title>{`Meet ${data.intro.split(" ")[0]}`}</title>
-        <meta name="description" content="" />
+        <meta
+          name="description"
+          content={`${data.about.substring(0, 120)}...`}
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="preconnect"
+          href="https://fonts.googleapis.com"
+          crossOrigin="true"
+        />
       </Head>
       <div className="d-flex flex-column margin-left">
         {HtmlTags(`<h>`, "")}
