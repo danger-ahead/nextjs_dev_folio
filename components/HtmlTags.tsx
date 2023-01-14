@@ -13,6 +13,8 @@ export function HtmlTags(
   cssClass: String
 ) {
   return (
-    <span className={`cursive text secondary ${cssClass}`}>{children}</span>
+    <span className={`cursive text-small secondary ${cssClass}`}>
+      {children}
+    </span>
   );
 }
