@@ -47,7 +47,7 @@ export default function Contact() {
   return (
     <>
       <Head>
-        <title>{`Get in touch`}</title>
+        <title>{`Contact ${data.intro.split(" ")[0]}`}</title>
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -62,7 +62,7 @@ export default function Contact() {
           {HtmlTags(`-->`, "white-space-nowrap")}
         </div>
         {HtmlTags("<span>", "margin-top-2p")}
-        <span className="margin-left margin-right primary-font-color">
+        <span className="margin-left margin-right primary-font-color text">
           I’m currently looking for new opportunities, and my inbox is always
           open. Whether you have a question or just want to say hi, I’ll get
           back to you!

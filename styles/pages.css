@@ -123,3 +123,50 @@
   gap: 10px;
   flex-wrap: wrap;
 }
+
+.empty-project-card {
+  height: 240px;
+}
+
+.empty-project-card div {
+  margin: 10px 0;
+  margin-left: 20px;
+  height: 20px;
+  margin: 10px 0;
+  margin-left: 20px;
+  border-radius: 20px;
+}
+
+.empty-project-card div:nth-child(1) {
+  width: 130px;
+}
+
+.empty-project-card div:nth-child(2) {
+  width: 260px;
+}
+
+.empty-project-card div:nth-child(3) {
+  width: 180px;
+}
+
+.empty-project-card div:nth-child(4) {
+  width: 320px;
+}
+
+.empty-project-card * {
+  background: linear-gradient(
+    120deg,
+    #3f3f3f 30%,
+    #535353 38%,
+    #555555 40%,
+    #2d2d2d 48%
+  );
+  background-size: 300%;
+  background-position: 100% 0;
+  animation: shimer 1.5s infinite;
+}
+@keyframes shimer {
+  to {
+    background-position: -100% 0;
+  }
+}

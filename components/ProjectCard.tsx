@@ -9,9 +9,19 @@ import ElasticText from "./ElasticText";
 import { ProjectCardProps } from "../models/DataTypes";
 
 const Card = (props: ProjectCardProps) => {
-  const handleDeployedLink = () => {
-    window.open(props.homepage, "about:blank");
-  };
+  if (
+    props.name == undefined ||
+    (props.name == "TypeError" && props.forks_count == undefined)
+  ) {
+    return (
+      <div className="project-card empty-project-card d-flex flex-column justify-content-center">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    );
+  }
 
   return (
     <div className="project-card d-flex flex-column justify-content-between">

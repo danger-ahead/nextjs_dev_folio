@@ -111,14 +111,7 @@ a {
 .right-corner {
   transform: rotate(90deg);
   right: 0px;
-  bottom: 6%;
-}
-
-.right-corner-line {
-  margin-left: 10px;
-  height: 1px;
-  width: 60px;
-  background-color: var(--primary-font-color);
+  bottom: 7%;
 }
 
 @media screen and (max-width: 900px) {

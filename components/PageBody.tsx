@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { ReactElement, JSXElementConstructor, ReactFragment } from "react";
 import { data } from "../repository/DataRepository";
 import { handleNavBarCollapse } from "../utils/NavBarCollapse";
@@ -20,14 +19,15 @@ export default function PageBody(
       </div>
       {HtmlTags(`</body>`, "margin-left")}
       {HtmlTags(`</html>`, "")}
-      <div className="position-fixed d-flex flex-row align-items-center right-corner button-effect">
+      <div className="position-fixed right-corner button-effect">
         <a
           className="right-corner-button cursor-pointer text-decoration-none button-effect"
-          href={`mailto:${data.email}`}
+          href={data.resume}
+          target="_blank"
+          rel="noreferrer"
         >
-          Email me!
+          My Resume!
         </a>
-        <span className="right-corner-line"></span>
       </div>
     </main>
   );

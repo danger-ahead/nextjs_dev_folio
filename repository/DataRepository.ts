@@ -1,4 +1,4 @@
-import { Data } from "../models/Data";
+import { Data } from "../models/DataTypes";
 import dataFromJson from "../public/data.json";
 
 export const data: Data = {
@@ -12,4 +12,5 @@ export const data: Data = {
   githubUserID: dataFromJson.githubUserID,
   repos: dataFromJson.repos,
   socials: dataFromJson.socials,
+  resume: dataFromJson.resume,
 };

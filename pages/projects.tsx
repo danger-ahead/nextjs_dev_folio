@@ -3,27 +3,20 @@ import React, { useEffect, useState } from "react";
 import FallInTextEntry from "../components/FallInTextEntry";
 import { HtmlTags } from "../components/HtmlTags";
 import Card from "../components/ProjectCard";
+import { ProjectDataArr } from "../models/DataTypes";
+import { data } from "../repository/DataRepository";
 import {
   addAnimationClass,
   removeAnimationClass,
 } from "../utils/CommonFunctions";
 import { repoURLs } from "../utils/Constants";
 
-type projectDataArr = {
-  name?: string;
-  description?: string | null;
-  star_gazers?: number;
-  forks?: number;
-  forks_count?: number;
-  html_url?: string;
-  homepage?: string | URL | undefined;
-  language?: string;
-  open_issues?: number;
-  topics?: any[] | null;
-};
-
 function Projects(): JSX.Element {
-  const [projectDataArr, setProjectArr] = useState<projectDataArr[]>([]);
+  const [projectDataArr, setProjectArr] = useState<ProjectDataArr[]>([
+    {},
+    {},
+    {},
+  ]);
 
   const getProjectData = async (url: string) => {
     try {
@@ -35,7 +28,7 @@ function Projects(): JSX.Element {
   };
 
   useEffect(() => {
-    let arrOfPromises: any[] = [];
+    const arrOfPromises: any[] = [];
 
     repoURLs.forEach((element) => {
       arrOfPromises.push(getProjectData(element));
@@ -59,7 +52,7 @@ function Projects(): JSX.Element {
   return (
     <>
       <Head>
-        <title>Projects</title>
+        <title>{`${data.intro.split(" ")[0]}'s Projects`}</title>
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
