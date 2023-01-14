@@ -3,12 +3,13 @@ import { data } from "../repository/DataRepository";
 import { HtmlTags } from "../components/HtmlTags";
 import FallInTextEntry from "../components/FallInTextEntry";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import linkedin from "../public/images/linkedin.webp";
 import github from "../public/images/github.webp";
 import instagram from "../public/images/instagram.webp";
 import twitter from "../public/images/twitter.webp";
 import stackoverflow from "../public/images/stackoverflow.webp";
+import { ProjectDataArr } from "../models/DataTypes";
 
 export default function Contact() {
   const socialButtons = [];
@@ -44,13 +45,32 @@ export default function Contact() {
     );
   }
 
+  const [templateData, setTemplateData] = useState<ProjectDataArr>();
+
+  useEffect(() => {
+    try {
+      fetch(
+        `${process.env.NEXT_PUBLIC_REPO_STATS_URL}api/gh_repo?owner=danger-ahead&repo=nextjsdevfolio`
+      ).then((res) => {
+        res.json().then((data) => {
+          setTemplateData(data);
+        });
+      });
+    } catch {}
+  }, []);
+
   return (
     <>
       <Head>
         <title>{`Contact ${data.intro.split(" ")[0]}`}</title>
-        <meta name="description" content="" />
+        <meta name="description" content={`How to reach ${data.intro}`} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="preconnect"
+          href="https://fonts.googleapis.com"
+          crossOrigin="true"
+        />
       </Head>
       <div className="margin-left d-flex flex-column">
         <div className="d-flex flex-row align-items-center">

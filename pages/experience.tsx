@@ -56,9 +56,17 @@ export default function Experience() {
     <>
       <Head>
         <title>{`${data.intro.split(" ")[0]}'s Experience`}</title>
-        <meta name="description" content="" />
+        <meta
+          name="description"
+          content={`${data.intro} has previously worked at these companies and has gained experience in these fields`}
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="preconnect"
+          href="https://fonts.googleapis.com"
+          crossOrigin="true"
+        />
       </Head>
       <div key="experience-page">
         <div className="d-flex flex-row justify-content-start align-items-center margin-left">
