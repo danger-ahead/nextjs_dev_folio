@@ -1,15 +1,15 @@
 import Head from "next/head";
 import React, { useEffect, useState } from "react";
-import FallInTextEntry from "../components/FallInTextEntry";
-import { HtmlTags } from "../components/HtmlTags";
-import Card from "../components/ProjectCard";
-import { ProjectDataArr } from "../models/DataTypes";
-import { data } from "../repository/DataRepository";
+import FallInTextEntry from "../../components/FallInTextEntry";
+import { HtmlTags } from "../../components/HtmlTags";
+import Card from "../../components/ProjectCard";
+import { ProjectDataArr } from "../../models/DataTypes";
+import { data } from "../../repository/DataRepository";
 import {
   addAnimationClass,
   removeAnimationClass,
-} from "../utils/CommonFunctions";
-import { repoURLs } from "../utils/Constants";
+} from "../../utils/CommonFunctions";
+import { repoURLs } from "../../utils/Constants";
 
 function Projects(): JSX.Element {
   const [projectDataArr, setProjectArr] = useState<ProjectDataArr[]>([
