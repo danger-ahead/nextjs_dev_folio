@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { data } from "../repository/DataRepository";
-import PageBody from "../components/PageBody";
 import { HtmlTags } from "../components/HtmlTags";
 import FallInTextEntry from "../components/FallInTextEntry";
 import { useState } from "react";
@@ -58,8 +57,25 @@ export default function Experience() {
         <title>{`${data.intro.split(" ")[0]}'s Experience`}</title>
         <meta
           name="description"
-          content={`${data.intro} has previously worked at these companies and has gained experience in these fields`}
+          content={`${data.experience[0]["title"]} - ${
+            data.experience[0]["company"]
+          }, ${data.experience[0]["description"].substring(0, 100)}...`}
         />
+        <meta
+          property="og:title"
+          content={`${data.intro.split(" ")[0]}'s Experience`}
+        />
+        <meta
+          property="og:description"
+          content={`${data.experience[0]["title"]} - ${
+            data.experience[0]["company"]
+          }, ${data.experience[0]["description"].substring(0, 100)}...`}
+        />
+        <meta
+          property="og:url"
+          content={`${process.env.NEXT_PUBLIC_BASE_URL}experience`}
+        />
+        <meta property="og:type" content="website" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
         <link

@@ -3,21 +3,33 @@ import { data } from "../repository/DataRepository";
 import { HtmlTags } from "../components/HtmlTags";
 import FallInTextEntry from "../components/FallInTextEntry";
 import Image from "next/image";
+import { useRef } from "react";
 
 export default function About() {
   function onClick() {
-    const element = document.getElementById("about-picture");
-
-    if (element) {
-      element.classList.add("about-picture-clicked");
-    }
+    aboutPicture.current!.classList.add("about-picture-clicked");
   }
+
+  const aboutPicture = useRef<HTMLImageElement | null>(null);
 
   return (
     <>
       <Head>
         <title>{`About ${data.intro.split(" ")[0]}`}</title>
-        <meta name="description" content={`Everything about ${data.intro}`} />
+        <meta name="description" content={`${data.about.substring(0, 160)}`} />
+        <meta
+          property="og:title"
+          content={`About ${data.intro.split(" ")[0]}`}
+        />
+        <meta
+          property="og:description"
+          content={`${data.about.substring(0, 160)}`}
+        />
+        <meta
+          property="og:url"
+          content={`${process.env.NEXT_PUBLIC_BASE_URL}about`}
+        />
+        <meta property="og:type" content="website" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
         <link
@@ -53,7 +65,7 @@ export default function About() {
             <div className="d-flex flex-row align-items-center">
               {HtmlTags(`"`, "")}
               <Image
-                id="about-picture"
+                ref={aboutPicture}
                 className="border-radius-5"
                 src={data.picture}
                 width="400"

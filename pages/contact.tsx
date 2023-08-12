@@ -65,7 +65,24 @@ export default function Contact() {
     <>
       <Head>
         <title>{`Contact ${data.intro.split(" ")[0]}`}</title>
-        <meta name="description" content={`How to reach ${data.intro}`} />
+        <meta
+          name="description"
+          content={`Contact ${
+            data.intro.split(" ")[0]
+          } on Social Media Platforms including LinkedIn, GitHub, Instagram, Twitter, StackOverflow, etc. and Email`}
+        />
+        <meta
+          property="og:title"
+          content={`Contact ${
+            data.intro.split(" ")[0]
+          } on Social Media Platforms including LinkedIn, GitHub, Instagram, Twitter, StackOverflow, etc. and Email`}
+        />
+        <meta property="og:description" content={`Contact ${data.intro}`} />
+        <meta
+          property="og:url"
+          content={`${process.env.NEXT_PUBLIC_BASE_URL}contact`}
+        />
+        <meta property="og:type" content="website" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
         <link

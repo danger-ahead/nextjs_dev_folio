@@ -7,12 +7,8 @@ import {
   addAnimationClass,
   removeAnimationClass,
 } from "../utils/CommonFunctions";
-// import UseOnScreen from "../hooks/UseOnScreen";
 
 export default function Home() {
-  // const aboutRef = useRef<HTMLDivElement>(null);
-  // const aboutRefValue = UseOnScreen(aboutRef);
-
   useEffect(() => {
     const toAnimate = 4;
     const addAnimationClassReturn = addAnimationClass({ animate: 4 });
@@ -29,10 +25,20 @@ export default function Home() {
     <>
       <Head key="home-page">
         <title>{`Meet ${data.intro.split(" ")[0]}`}</title>
+        <meta name="description" content={`${data.about.substring(0, 160)}`} />
         <meta
-          name="description"
-          content={`${data.about.substring(0, 120)}...`}
+          property="og:title"
+          content={`Meet ${data.intro.split(" ")[0]}`}
         />
+        <meta
+          property="og:description"
+          content={`${data.about.substring(0, 160)}`}
+        />
+        <meta
+          property="og:url"
+          content={`${process.env.NEXT_PUBLIC_BASE_URL}`}
+        />
+        <meta property="og:type" content="website" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
         <link
@@ -76,9 +82,6 @@ export default function Home() {
           {HtmlTags(`</a>`, "")}
         </div>
       </div>
-      {/* <div id={`${data.paths[0]}`} ref={aboutRef}>
-        {aboutRefValue && <About />}
-      </div> */}
     </>
   );
 }
