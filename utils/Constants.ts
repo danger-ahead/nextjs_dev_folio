@@ -6,7 +6,7 @@ let repoURLs: string[] = [];
 
 repos.forEach((element) => {
   repoURLs.push(
-    `${process.env.NEXT_PUBLIC_REPO_STATS_URL}api/gh_repo?owner=${data.githubUserID}&repo=${element}`
+    `${process.env.NEXT_PUBLIC_BASE_URL}api/gh_repo?owner=${data.githubUserID}&repo=${element}`
   );
 });
 

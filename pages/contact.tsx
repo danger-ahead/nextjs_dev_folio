@@ -52,7 +52,7 @@ export default function Contact() {
   useEffect(() => {
     try {
       fetch(
-        `${process.env.NEXT_PUBLIC_REPO_STATS_URL}api/gh_repo?owner=danger-ahead&repo=nextjs_dev_folio`
+        `${process.env.NEXT_PUBLIC_BASE_URL}api/gh_repo?owner=danger-ahead&repo=nextjs_dev_folio`
       ).then((res) => {
         res.json().then((data) => {
           setTemplateData(data);
