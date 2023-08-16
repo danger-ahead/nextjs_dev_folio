@@ -4,19 +4,19 @@ function NearbyChat(): JSX.Element {
   return (
     <>
       <Head>
-        <title>Nearby Chat</title>
+        <title>Flutter Dictionary</title>
         <meta
           name="description"
-          content={`A Flutter Application that allows users to chat with nearby users in the same Wi-Fi or Hotspot network.`}
+          content={`Multiple Languages, Meanings, Pronunciation, Searched Words History.`}
         />
-        <meta property="og:title" content={`Nearby Chat`} />
+        <meta property="og:title" content={`Flutter Dictionary`} />
         <meta
           property="og:description"
-          content={`A Flutter Application that allows users to chat with nearby users in the same Wi-Fi or Hotspot network.`}
+          content={`Multiple Languages, Meanings, Pronunciation, Searched Words History.`}
         />
         <meta
           property="og:url"
-          content={`${process.env.NEXT_PUBLIC_BASE_URL}/projects/nearby_chat/privacy-policy`}
+          content={`${process.env.NEXT_PUBLIC_BASE_URL}/projects/flutter_dictionary/privacy-policy`}
         />
         <meta property="og:type" content="article" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
