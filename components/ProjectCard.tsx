@@ -7,6 +7,7 @@ import Github from "../public/images/github.webp";
 import Link from "../public/images/link.webp";
 import ElasticText from "./ElasticText";
 import { ProjectCardProps } from "../models/DataTypes";
+import styles from "../styles/Projects.module.css";
 
 const Card = (props: ProjectCardProps) => {
   if (
@@ -14,7 +15,9 @@ const Card = (props: ProjectCardProps) => {
     (props.name == "TypeError" && props.forks_count == undefined)
   ) {
     return (
-      <div className="project-card empty-project-card d-flex flex-column justify-content-center">
+      <div
+        className={`${styles.project__card} ${styles.empty__project__card} d-flex flex-column justify-content-center`}
+      >
         <div></div>
         <div></div>
         <div></div>
@@ -24,7 +27,9 @@ const Card = (props: ProjectCardProps) => {
   }
 
   return (
-    <div className="project-card d-flex flex-column justify-content-between">
+    <div
+      className={`${styles.project__card} d-flex flex-column justify-content-between`}
+    >
       {HtmlTags("<project>", "d-block")}
       <div
         style={{ padding: `0rem 1.75rem` }}
@@ -66,9 +71,11 @@ const Card = (props: ProjectCardProps) => {
           </div>
         </div>
         {ElasticText(`${props.name}`, "text")}
-        <p className="project-description">{props.description}</p>
-        <div className="project-footer">
-          <ul className="project-tech-topics d-flex primary-font-color-darker">
+        <p className={`${styles.project__description}`}>{props.description}</p>
+        <div className={`${styles.project__footer}`}>
+          <ul
+            className={`${styles.project__tech__topics} d-flex primary-font-color-darker`}
+          >
             {props.topics?.map((item, index) => {
               return (
                 <li style={{ fontSize: "12px" }} key={index}>

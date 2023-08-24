@@ -1,0 +1,6 @@
+@media screen and (max-width: 767px) {
+  .social__buttons {
+    width: calc(2.125rem + ((1vw - 3px) * 1.2848));
+    height: auto;
+  }
+}

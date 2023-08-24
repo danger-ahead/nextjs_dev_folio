@@ -16,7 +16,8 @@
     "eslint-config-next": "13.4.13",
     "next": "^13.4.10",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "next-mdx-remote": "^4.4.1"
   },
   "devDependencies": {
     "prettier": "2.8.1",

@@ -10,29 +10,25 @@
       "title": "Mobile Application Developer",
       "company": "Microbase Infotech Pvt. Ltd.",
       "company_url": "https://www.microbaseinfotech.com/",
-      "duration": "July 2023 - Present",
-      "description": "Developing mobile applications for clients using Flutter."
+      "duration": "July 2023 - Present"
     },
     {
       "title": "SWE Intern",
       "company": "Buzzli.ai",
       "company_url": "https://buzzli.in",
-      "duration": "June 2023 - Present",
-      "description": "Building Buzzli's MVP using Next.js and Supabase."
+      "duration": "June 2023 - Present"
     },
     {
       "title": "SDE Intern",
       "company": "Ekko",
       "company_url": "https://ekko.network/",
-      "duration": "May 2022 - February 2023",
-      "description": "Worked on a web platform to help people connect digitally and help them forget the pain of carrying physical business cards again."
+      "duration": "May 2022 - February 2023"
     },
     {
       "title": "Web & App Lead",
       "company": "GDSC RCCIIT",
       "company_url": "https://gdsc-rcciit-web.web.app/",
-      "duration": "August 2022 - May 2023",
-      "description": "Managed and Led a team of student developers and organised events for the club. Also worked on the club website and database."
+      "duration": "August 2022 - May 2023"
     }
   ],
   "githubUserID": "danger-ahead",

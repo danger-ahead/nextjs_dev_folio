@@ -10,6 +10,7 @@ import {
   removeAnimationClass,
 } from "../../utils/CommonFunctions";
 import { repoURLs } from "../../utils/Constants";
+import styles from "../../styles/Projects.module.css";
 
 function Projects(): JSX.Element {
   const [projectDataArr, setProjectArr] = useState<ProjectDataArr[]>([
@@ -72,16 +73,18 @@ function Projects(): JSX.Element {
           crossOrigin="true"
         />
       </Head>
-      <div className="margin-left d-flex flex-column project-section-container">
+      <div
+        className={`margin-left d-flex flex-column ${styles.project__section__container}`}
+      >
         <div className="d-flex flex-row align-items-center">
           {HtmlTags(`<!--`, "white-space-nowrap")}
           {FallInTextEntry(
-            "03. my projects",
+            "03. My Projects",
             "subtitle secondary-font-color text-shadow"
           )}
           {HtmlTags(`-->`, "white-space-nowrap")}
         </div>
-        <div className="d-grid projects-container margin-top-2p">
+        <div className={`d-grid ${styles.projects__container} margin-top-2p`}>
           {projectDataArr.map((item, index) => {
             return (
               <Card

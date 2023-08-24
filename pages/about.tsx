@@ -3,15 +3,24 @@ import { data } from "../repository/DataRepository";
 import { HtmlTags } from "../components/HtmlTags";
 import FallInTextEntry from "../components/FallInTextEntry";
 import Image from "next/image";
-import { useRef } from "react";
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote } from "next-mdx-remote";
+import path from "path";
+import fs from "fs";
+import { InferGetStaticPropsType } from "next";
+import styles from "../styles/About.module.css";
 
-export default function About() {
-  function onClick() {
-    aboutPicture.current!.classList.add("about-picture-clicked");
-  }
+export async function getStaticProps() {
+  const source = fs.readFileSync(path.join("static", "about.mdx"), "utf8");
+  const mdxSource = await serialize(source, {
+    parseFrontmatter: true,
+  });
+  return { props: { source: mdxSource } };
+}
 
-  const aboutPicture = useRef<HTMLImageElement | null>(null);
-
+export default function About({
+  source,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
       <Head>
@@ -38,12 +47,15 @@ export default function About() {
           crossOrigin="true"
         />
       </Head>
-      <div key="about-page" className="d-flex about justify-content-start">
-        <div className="margin-left d-flex flex-column about-text">
+      <div
+        key="about-page"
+        className={`d-flex ${styles.about} justify-content-start`}
+      >
+        <div className={`margin-left d-flex flex-column ${styles.about__text}`}>
           <div className="d-flex flex-row align-items-center">
             {HtmlTags(`<!--`, "white-space-nowrap")}
             {FallInTextEntry(
-              "01. about me",
+              "01. About Me",
               "subtitle secondary-font-color text-shadow"
             )}
             {HtmlTags(`-->`, "white-space-nowrap")}
@@ -51,27 +63,27 @@ export default function About() {
           <br></br>
           <br></br>
           {HtmlTags("<textarea>", "white-space-nowrap")}
-          <span className="white-space-preline primary-font-color">
+          <span className="primary-font-color">
             <br></br>
-            <div className="margin-left text-align-justify">{data.about}</div>
+            <div className="margin-left">
+              <MDXRemote {...source} />
+            </div>
             <br></br>
             <br></br>
           </span>
           {HtmlTags("<textarea>", "white-space-nowrap")}
         </div>
         {HtmlTags(
-          <div className="d-flex about-picture align-items-center">
+          <div className={`d-flex ${styles.about__picture} align-items-center`}>
             {`<img src=`}
             <div className="d-flex flex-row align-items-center">
               {HtmlTags(`"`, "")}
               <Image
-                ref={aboutPicture}
                 className="border-radius-5"
                 src={data.picture}
                 width="400"
                 height="400"
                 alt="picture"
-                onClick={onClick}
               />
               {HtmlTags(`"`, "")}
             </div>

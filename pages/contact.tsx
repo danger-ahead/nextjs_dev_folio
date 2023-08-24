@@ -12,8 +12,24 @@ import stackoverflow from "../public/images/stackoverflow.webp";
 import { ProjectDataArr } from "../models/DataTypes";
 import fork from "../public/images/fork.webp";
 import star from "../public/images/star.webp";
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote } from "next-mdx-remote";
+import path from "path";
+import fs from "fs";
+import { InferGetStaticPropsType } from "next";
+import styles from "../styles/Contact.module.css";
 
-export default function Contact() {
+export async function getStaticProps() {
+  const source = fs.readFileSync(path.join("static", "contact.mdx"), "utf8");
+  const mdxSource = await serialize(source, {
+    parseFrontmatter: true,
+  });
+  return { props: { source: mdxSource } };
+}
+
+export default function Contact({
+  source,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   const socialButtons = [];
 
   for (let i = 0; i < Object.keys(data.socials).length; i++) {
@@ -27,7 +43,7 @@ export default function Contact() {
         rel="noreferrer"
       >
         <Image
-          className="cursor-pointer social-buttons button-effect"
+          className={`cursor-pointer ${styles.social__buttons} button-effect`}
           src={
             src === "linkedin"
               ? linkedin
@@ -95,16 +111,14 @@ export default function Contact() {
         <div className="d-flex flex-row align-items-center">
           {HtmlTags(`<!--`, "white-space-nowrap")}
           {FallInTextEntry(
-            "04. get in touch",
+            "04. Get In Touch",
             "subtitle secondary-font-color text-shadow"
           )}
           {HtmlTags(`-->`, "white-space-nowrap")}
         </div>
         {HtmlTags("<span>", "margin-top-2p")}
         <span className="margin-left margin-right primary-font-color text">
-          I’m currently looking for new opportunities, and my inbox is always
-          open. Whether you have a question or just want to say hi, I’ll get
-          back to you!
+          <MDXRemote {...source} />
         </span>
         {HtmlTags("</span>", "margin-bottom-2p")}
         {HtmlTags("<button>", "")}

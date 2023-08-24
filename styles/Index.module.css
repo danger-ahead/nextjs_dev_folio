@@ -1,0 +1,10 @@
+.mobile__resume__block {
+  display: none;
+}
+
+@media screen and (max-width: 900px) {
+  .mobile__resume__block {
+    display: block;
+    margin-top: 50px;
+  }
+}

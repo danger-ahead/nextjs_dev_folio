@@ -2,15 +2,13 @@
 @import url("https://fonts.googleapis.com/css2?family=La+Belle+Aurore&display=swap");
 
 :root {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "JetBrains Mono";
   --primary-font-color: white;
   --primary-font-color-darker: #a0a0a0;
   --secondary-font-color: #08fdd8;
   --primary-color: #1d1d1d;
   --primary-color-light-shade: #222222;
   --secondary-color: #515152;
-  --tag-font-family: "Messapia-Regular", monospace;
-  --tag-font-family-1: "Cascadia";
 }
 
 body {
@@ -25,6 +23,10 @@ body {
 
 a {
   color: var(--primary-font-color);
+}
+
+button {
+  font-family: "Jetbrains Mono";
 }
 
 #__next {
@@ -242,14 +244,6 @@ a {
 
 .border-radius-5 {
   border-radius: 5%;
-}
-
-.white-space-preline {
-  white-space: pre-line;
-}
-
-.text-align-justify {
-  text-align: justify;
 }
 
 .cursor-pointer {

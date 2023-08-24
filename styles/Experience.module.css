@@ -1,0 +1,38 @@
+.experience {
+  flex-direction: row;
+}
+
+.experience__container {
+  width: 50%;
+}
+
+.experience__selection__button__container {
+  flex-direction: column;
+}
+
+.experience__selection__button {
+  flex-direction: row;
+  column-gap: 10px;
+}
+
+@media screen and (max-width: 900px) {
+  .experience {
+    flex-direction: column !important;
+  }
+
+  .experience__container {
+    margin-top: 50px;
+    width: 90% !important;
+  }
+
+  .experience__selection__button__container {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .experience__selection__button {
+    flex-direction: column;
+    align-items: start;
+    margin-right: 10px;
+  }
+}

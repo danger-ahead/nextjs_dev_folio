@@ -1,0 +1,89 @@
+.projects__container {
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 15px;
+}
+
+@media screen and (max-width: 440px) {
+  .projects__container {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+  .project__description {
+    word-break: break-word;
+  }
+}
+
+@media screen and (max-width: 335px) {
+  .projects__container {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+  .project__section__container {
+    margin-left: 0;
+  }
+}
+
+.project__card {
+  padding: 5px 10px;
+  background-color: var(--primary-color-light-shade);
+  border-radius: 5px;
+  transition: all 0.2s ease;
+}
+
+.project__card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.project__tech__topics {
+  list-style: none;
+  padding: inherit;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.empty__project__card {
+  height: 240px;
+}
+
+.empty__project__card div {
+  margin: 10px 0;
+  margin-left: 20px;
+  height: 20px;
+  margin: 10px 0;
+  margin-left: 20px;
+  border-radius: 20px;
+}
+
+.empty__project__card div:nth-child(1) {
+  width: 130px;
+}
+
+.empty__project__card div:nth-child(2) {
+  width: 260px;
+}
+
+.empty__project__card div:nth-child(3) {
+  width: 180px;
+}
+
+.empty__project__card div:nth-child(4) {
+  width: 320px;
+}
+
+.empty__project__card * {
+  background: linear-gradient(
+    120deg,
+    #3f3f3f 30%,
+    #535353 38%,
+    #555555 40%,
+    #2d2d2d 48%
+  );
+  background-size: 300%;
+  background-position: 100% 0;
+  animation: shimer 1.5s infinite;
+}
+
+@keyframes shimer {
+  to {
+    background-position: -100% 0;
+  }
+}

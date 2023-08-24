@@ -7,6 +7,7 @@ import {
   addAnimationClass,
   removeAnimationClass,
 } from "../utils/CommonFunctions";
+import styles from "../styles/Index.module.css";
 
 export default function Home() {
   useEffect(() => {
@@ -65,7 +66,7 @@ export default function Home() {
           })}
           {HtmlTags(`</span>`, "")}
         </div>
-        <div className="mobile-resume-block">
+        <div className={`${styles.mobile__resume__block}`}>
           {HtmlTags(`<a`, "")}
           <span className="d-flex flex-row margin-left align-items-center">
             {HtmlTags(`href="`, "")}
