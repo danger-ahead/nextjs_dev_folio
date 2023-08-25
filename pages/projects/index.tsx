@@ -1,7 +1,5 @@
 import Head from "next/head";
 import React, { useEffect, useState } from "react";
-import FallInTextEntry from "../../components/FallInTextEntry";
-import { HtmlTags } from "../../components/HtmlTags";
 import Card from "../../components/ProjectCard";
 import { ProjectDataArr } from "../../models/DataTypes";
 import { data } from "../../repository/DataRepository";
@@ -11,6 +9,7 @@ import {
 } from "../../utils/CommonFunctions";
 import { repoURLs } from "../../utils/Constants";
 import styles from "../../styles/Projects.module.css";
+import Title from "../../components/title";
 
 function Projects(): JSX.Element {
   const [projectDataArr, setProjectArr] = useState<ProjectDataArr[]>([
@@ -73,17 +72,10 @@ function Projects(): JSX.Element {
           crossOrigin="true"
         />
       </Head>
-      <div
+      <main
         className={`margin-left d-flex flex-column ${styles.project__section__container}`}
       >
-        <div className="d-flex flex-row align-items-center">
-          {HtmlTags(`<!--`, "white-space-nowrap")}
-          {FallInTextEntry(
-            "03. My Projects",
-            "subtitle secondary-font-color text-shadow"
-          )}
-          {HtmlTags(`-->`, "white-space-nowrap")}
-        </div>
+        <Title title="My Projects" />
         <div className={`d-grid ${styles.projects__container} margin-top-2p`}>
           {projectDataArr.map((item, index) => {
             return (
@@ -100,7 +92,7 @@ function Projects(): JSX.Element {
             );
           })}
         </div>
-      </div>
+      </main>
     </>
   );
 }

@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { data } from "../repository/DataRepository";
 import ElasticText from "../components/ElasticText";
-import { useEffect } from "react";
+import { ReactNode, useEffect } from "react";
 import { HtmlTags } from "../components/HtmlTags";
 import {
   addAnimationClass,
@@ -21,6 +21,35 @@ export default function Home() {
       }
     };
   }, []);
+
+  const tagline: ReactNode[] = [];
+  const name: ReactNode[] = [];
+
+  for (let word of data.intro.split(" ")) {
+    name.push(ElasticText(word, "title", `${data.intro}__${word}`));
+  }
+
+  for (let sentence of data.tagline) {
+    const row: ReactNode[] = [];
+
+    const words = sentence.split(" ");
+
+    for (let word of words) {
+      row.push(ElasticText(word, "subtitle", `${sentence}__${word}`));
+    }
+
+    tagline.push(
+      <p
+        style={{
+          gap: "0.6rem",
+        }}
+        className="margin-left d-flex flex-wrap"
+        key={`${sentence}`}
+      >
+        {row}
+      </p>
+    );
+  }
 
   return (
     <>
@@ -53,17 +82,18 @@ export default function Home() {
         <span className="margin-left">
           {ElasticText("Hi, I'm", "subtitle")}
         </span>
-        <span className="margin-left">{ElasticText(data.intro, "title")}</span>
+        <h2
+          style={{
+            gap: "1rem",
+          }}
+          className="margin-left d-flex flex-wrap"
+        >
+          {name}
+        </h2>
         {HtmlTags(`</h>`, "")}
         <div className="d-flex flex-column">
           {HtmlTags(`<span>`, "")}
-          {data.tagline.map((i, index) => {
-            return (
-              <div className="margin-left" key={`${index}${i}`}>
-                {ElasticText(i, "subtitle")}
-              </div>
-            );
-          })}
+          {tagline}
           {HtmlTags(`</span>`, "")}
         </div>
         <div className={`${styles.mobile__resume__block}`}>

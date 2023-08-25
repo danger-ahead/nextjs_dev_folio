@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { data } from "../repository/DataRepository";
 import { HtmlTags } from "../components/HtmlTags";
-import FallInTextEntry from "../components/FallInTextEntry";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import linkedin from "../public/images/linkedin.webp";
@@ -18,6 +17,7 @@ import path from "path";
 import fs from "fs";
 import { InferGetStaticPropsType } from "next";
 import styles from "../styles/Contact.module.css";
+import Title from "../components/title";
 
 export async function getStaticProps() {
   const source = fs.readFileSync(path.join("static", "contact.mdx"), "utf8");
@@ -108,14 +108,7 @@ export default function Contact({
         />
       </Head>
       <div className="margin-left d-flex flex-column">
-        <div className="d-flex flex-row align-items-center">
-          {HtmlTags(`<!--`, "white-space-nowrap")}
-          {FallInTextEntry(
-            "04. Get In Touch",
-            "subtitle secondary-font-color text-shadow"
-          )}
-          {HtmlTags(`-->`, "white-space-nowrap")}
-        </div>
+        <Title title="Get In Touch" />
         {HtmlTags("<span>", "margin-top-2p")}
         <span className="margin-left margin-right primary-font-color text">
           <MDXRemote {...source} />

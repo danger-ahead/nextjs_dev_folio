@@ -1,17 +1,25 @@
-export default function ElasticText(data: String, cssClass: String) {
+export default function ElasticText(
+  data: string,
+  cssClass: string,
+  key?: string
+) {
   const element = [];
 
   for (let i = 0; i < data.length; i++) {
     if (data[i] === " ") {
-      element.push(<span key={`${data}${i}`}>&emsp;</span>);
+      element.push(<span key={`${data}${i}space`}>&emsp;</span>);
     } else {
       element.push(
-        <span key={`${data}${i}`} className={`elastic ${cssClass}`}>
+        <span key={`${i}${data}`} className={`elastic ${cssClass}`}>
           {data[i]}
         </span>
       );
     }
   }
 
-  return <div className="d-flex flex-row">{element}</div>;
+  return (
+    <span key={key} className="d-flex flex-row">
+      {element}
+    </span>
+  );
 }

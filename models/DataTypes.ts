@@ -1,9 +1,12 @@
-export interface keyable {
-  [key: string]: any;
-}
-
 export interface map {
   [key: string]: string;
+}
+
+export interface Experience {
+  title: string;
+  company: string;
+  company_url: string;
+  duration: string;
 }
 
 export type Data = {
@@ -12,8 +15,11 @@ export type Data = {
   about: string;
   email: string;
   tagline: String[];
-  bio: String[];
-  experience: keyable[];
+  experience: Experience[];
+  additionalExperience?: {
+    title: string;
+    experience: Experience[];
+  };
   githubUserID: string;
   repos: string[];
   socials: map;

@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { data } from "../repository/DataRepository";
 import { HtmlTags } from "../components/HtmlTags";
-import FallInTextEntry from "../components/FallInTextEntry";
 import Image from "next/image";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
@@ -9,6 +8,7 @@ import path from "path";
 import fs from "fs";
 import { InferGetStaticPropsType } from "next";
 import styles from "../styles/About.module.css";
+import Title from "../components/title";
 
 export async function getStaticProps() {
   const source = fs.readFileSync(path.join("static", "about.mdx"), "utf8");
@@ -52,14 +52,7 @@ export default function About({
         className={`d-flex ${styles.about} justify-content-start`}
       >
         <div className={`margin-left d-flex flex-column ${styles.about__text}`}>
-          <div className="d-flex flex-row align-items-center">
-            {HtmlTags(`<!--`, "white-space-nowrap")}
-            {FallInTextEntry(
-              "01. About Me",
-              "subtitle secondary-font-color text-shadow"
-            )}
-            {HtmlTags(`-->`, "white-space-nowrap")}
-          </div>
+          <Title title="About Me" />
           <br></br>
           <br></br>
           {HtmlTags("<textarea>", "white-space-nowrap")}

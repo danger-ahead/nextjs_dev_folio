@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { data } from "../repository/DataRepository";
 import { HtmlTags } from "../components/HtmlTags";
-import FallInTextEntry from "../components/FallInTextEntry";
 import { ReactNode, useState } from "react";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
@@ -9,6 +8,7 @@ import path from "path";
 import fs from "fs";
 import { InferGetStaticPropsType } from "next";
 import styles from "../styles/Experience.module.css";
+import Title from "../components/title";
 
 export async function getStaticProps() {
   const mdxToBeSerialized: Promise<
@@ -29,6 +29,18 @@ export async function getStaticProps() {
     });
   }
 
+  data.additionalExperience?.experience.forEach((experience, index) => {
+    const source = fs.readFileSync(
+      path.join("static/additionalExperience", `${index + 1}.mdx`),
+      "utf8"
+    );
+    mdxToBeSerialized.push(
+      serialize(source, {
+        parseFrontmatter: true,
+      })
+    );
+  });
+
   const mdxSource = await Promise.all(mdxToBeSerialized);
 
   return { props: { source: mdxSource } };
@@ -38,11 +50,60 @@ export default function Experience({
   source,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [selectedExperience, setSelectedExperience] = useState(0);
-  const experiences: ReactNode[] = [];
+  const [selectedAdditionalExperience, setSelectedAdditionalExperience] =
+    useState(0);
 
-  {
-    data.experience.forEach((experience, index) => {
-      experiences.push(
+  const experiences: ReactNode[] = [];
+  const additionalExperiences: ReactNode[] = [];
+
+  data.experience.forEach((experience, index) => {
+    experiences.push(
+      <div
+        className={`d-flex flex-column margin-left ${styles.experience__container}`}
+      >
+        <div
+          key={`${experience["company"]}${experience}`}
+          className="d-flex flex-column"
+        >
+          {HtmlTags("<title> ", "white-space-nowrap")}
+          <div className="d-flex flex-row margin-left">
+            <span className="primary-font-color text">{`${experience["title"]}`}</span>
+            &emsp;
+            <a
+              href={`${experience["company_url"]}`}
+              target="_blank"
+              rel="noreferrer"
+              className="text-decoration-none secondary-font-color text button-effect"
+            >
+              {`@${experience["company"]}`}
+            </a>
+          </div>
+          {HtmlTags(" </title>", "white-space-nowrap")}
+        </div>
+        <div className="d-flex flex-column">
+          <div className="d-flex flex-row align-items-center">
+            {HtmlTags("<date>", "white-space-nowrap")}
+            <span className="primary-font-color text-small">
+              &nbsp;
+              {`${experience["duration"]}`}&nbsp;
+            </span>
+            {HtmlTags("</date>", "white-space-nowrap")}
+          </div>
+          <div className="d-flex flex-column align-items-start">
+            {HtmlTags("<details>", "white-space-nowrap")}
+            <div className="margin-left margin-right primary-font-color text-small">
+              <MDXRemote {...source[index]} />
+            </div>
+            {HtmlTags("</details>", "white-space-nowrap")}
+          </div>
+        </div>
+      </div>
+    );
+  });
+
+  if (data.additionalExperience !== undefined) {
+    data.additionalExperience.experience.forEach((experience, index) => {
+      additionalExperiences.push(
         <div
           className={`d-flex flex-column margin-left ${styles.experience__container}`}
         >
@@ -77,7 +138,7 @@ export default function Experience({
             <div className="d-flex flex-column align-items-start">
               {HtmlTags("<details>", "white-space-nowrap")}
               <div className="margin-left margin-right primary-font-color text-small">
-                <MDXRemote {...source[index]} />
+                <MDXRemote {...source[index + data.experience.length]} />
               </div>
               {HtmlTags("</details>", "white-space-nowrap")}
             </div>
@@ -117,22 +178,12 @@ export default function Experience({
         />
       </Head>
       <main key="experience-page">
-        <div className="d-flex flex-row justify-content-start align-items-center margin-left">
-          {HtmlTags(`<!--`, "white-space-nowrap")}
-          {FallInTextEntry(
-            "02. My Experience",
-            "subtitle secondary-font-color text-shadow"
-          )}
-          {HtmlTags(`-->`, "white-space-nowrap")}
-        </div>
+        <Title title="My Experience" />
         <br></br>
         <br></br>
         <div className={`d-flex ${styles.experience} align-items-start`}>
           <div
-            className={`d-flex ${styles.experience__selection__button__container} justify-content-start margin-left primary-font-color text`}
-            style={{
-              flexWrap: "wrap",
-            }}
+            className={`d-flex ${styles.experience__selection__button__container} justify-content-start margin-left primary-font-color text flex-wrap`}
           >
             {data.experience.map((experience, index) => {
               return (
@@ -148,7 +199,9 @@ export default function Experience({
                   }`}
                 >
                   {HtmlTags("<button>", "white-space-nowrap")}
-                  <span className="text-small button-effect">
+                  <span
+                    className={`text-small button-effect ${styles.experience__company__name}`}
+                  >
                     {`${index + 1}. ${experience["company"]}`}
                   </span>
                   {HtmlTags("</button>", "white-space-nowrap")}
@@ -158,6 +211,47 @@ export default function Experience({
           </div>
           {experiences[selectedExperience]}
         </div>
+        {data.additionalExperience !== undefined ? (
+          <>
+            <br></br>
+            <br></br>
+            <Title title={data.additionalExperience.title} />
+            <br></br>
+            <br></br>
+            <div className={`d-flex ${styles.experience} align-items-start`}>
+              <div
+                className={`d-flex ${styles.experience__selection__button__container} justify-content-start margin-left primary-font-color text flex-wrap`}
+              >
+                {data.additionalExperience.experience.map(
+                  (experience, index) => {
+                    return (
+                      <button
+                        key={`additional__${experience["company"]}${index}`}
+                        onClick={() => setSelectedAdditionalExperience(index)}
+                        className={`d-flex cursor-pointer bg-primary border-none ${
+                          styles.experience__selection__button
+                        } ${
+                          index === selectedAdditionalExperience
+                            ? "secondary-font-color"
+                            : "primary-font-color"
+                        }`}
+                      >
+                        {HtmlTags("<button>", "white-space-nowrap")}
+                        <span
+                          className={`text-small button-effect ${styles.experience__company__name}`}
+                        >
+                          {`${index + 1}. ${experience["company"]}`}
+                        </span>
+                        {HtmlTags("</button>", "white-space-nowrap")}
+                      </button>
+                    );
+                  }
+                )}
+              </div>
+              {additionalExperiences[selectedAdditionalExperience]}
+            </div>
+          </>
+        ) : null}
       </main>
     </>
   );

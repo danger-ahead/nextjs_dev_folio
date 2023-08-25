@@ -1,8 +1,7 @@
 {
   "intro": "Shourya Shikhar",
   "picture": "https://i.imgur.com/4UzPCGg.png",
-  "about": "Hello! My name is Shourya and I'm a final yr. CS Engineering student. My interest in web and app development started from my pre-college days when I tried forking an android app to get rid of ads. Turns out hacking together a custom application taught me a lot about how apps work!\n\nFast-forward to today, and I've had the privilege of working at a start-up, and a student-led developer club. My main focus these days is learning new technologies and leveling up as a developer.\n\nI also happen to be a regular contributor to open-source projects like CircuitVerse and Flutter.\n\nHere are a few technologies I've been working with recently:\n\nTypeScript, NextJS, Supabase, FastAPI & Flutter.",
-  "bio": ["I'm a Full Stack Developer and an Open Source Enthusiast"],
+  "about": "Hello, my name is Shourya Shikhar Ghosh. I'm a final yr. CS Engineering student. Web, App & Backend Developer, Open Source Contributor and a Linux Enthusiast. Few technologies I've been working with recently: TypeScript, NextJS, Supabase, FastAPI & Flutter.",
   "tagline": ["I build stuff for you,", "for the web,", "for the world."],
   "email": "danger.ahead@protonmail.com",
   "experience": [
@@ -23,14 +22,19 @@
       "company": "Ekko",
       "company_url": "https://ekko.network/",
       "duration": "May 2022 - February 2023"
-    },
-    {
-      "title": "Web & App Lead",
-      "company": "GDSC RCCIIT",
-      "company_url": "https://gdsc-rcciit-web.web.app/",
-      "duration": "August 2022 - May 2023"
     }
   ],
+  "additionalExperience": {
+    "title": "Leadership & Community Involvement",
+    "experience": [
+      {
+        "title": "Web & App Lead",
+        "company": "GDSC RCCIIT",
+        "company_url": "https://gdsc-rcciit-web.web.app/",
+        "duration": "August 2022 - May 2023"
+      }
+    ]
+  },
   "githubUserID": "danger-ahead",
   "repos": [
     "flutter_dev_folio",

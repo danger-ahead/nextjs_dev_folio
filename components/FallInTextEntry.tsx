@@ -1,6 +1,10 @@
 import { useEffect } from "react";
 
-export default function FallInTextEntry(data: String, cssClass: String) {
+export default function FallInTextEntry(
+  data: string,
+  cssClass: string,
+  key?: string
+) {
   const element: JSX.Element[] = [];
 
   for (let i = 0; i < data.length; i++) {
@@ -30,6 +34,8 @@ export default function FallInTextEntry(data: String, cssClass: String) {
   });
 
   return (
-    <div className="d-flex flex-row margin-left margin-right">{element}</div>
+    <span key={key} className="d-flex flex-row margin-left margin-right">
+      {element}
+    </span>
   );
 }

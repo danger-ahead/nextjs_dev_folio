@@ -15,6 +15,10 @@
   column-gap: 10px;
 }
 
+.experience__company__name {
+  text-align: justify;
+}
+
 @media screen and (max-width: 900px) {
   .experience {
     flex-direction: column !important;
