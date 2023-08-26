@@ -10,11 +10,7 @@ export default function Title({ title }: { title: string }) {
 
   for (let word of words) {
     titleElements.push(
-      FallInTextEntry(
-        word,
-        "subtitle secondary-font-color text-shadow",
-        `${word}__title`
-      )
+      <FallInTextEntry text={word} key={`${word}__falling`} />
     );
   }
 

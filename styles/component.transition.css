@@ -29,13 +29,6 @@
   animation-fill-mode: forwards;
 }
 
-.disappear2 {
-  animation-name: translate-page-forward;
-  animation-duration: 2s;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
-}
-
 @keyframes translate-page-forward {
   0% {
     scale: 1;

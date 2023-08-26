@@ -1,45 +1,45 @@
-import { useEffect } from "react";
+import { useState, useEffect, ReactNode } from "react";
 import styles from "../styles/components/FallInTextEntry.module.css";
 
-export default function FallInTextEntry(
-  data: string,
-  cssClass: string,
-  key?: string
-) {
-  const element: JSX.Element[] = [];
+export default function FallInTextEntry({ text }: { text: string }) {
+  const [animatedText, setAnimatedText] = useState<ReactNode[]>([]);
 
-  for (let i = 0; i < data.length; i++) {
-    if (data[i] === " ") {
-      element.push(<span key={`${data}${i}`}>&emsp;</span>);
-    } else {
-      element.push(
-        <span key={`${data}${i}`} className={`fall-in-text-entry ${cssClass}`}>
-          {data[i]}
-        </span>
-      );
-    }
-  }
+  const [showOriginalText, setShowOriginalText] = useState<boolean>(true);
 
   useEffect(() => {
-    const elements = document.getElementsByClassName("fall-in-text-entry");
+    setShowOriginalText(false);
+    const textArray = text.split("");
+    let delay = 0;
 
-    let index = 0;
-    const interval = setInterval(() => {
-      elements[index]?.classList.add("fall-in");
-      index++;
-      if (index >= data.length) {
-        clearInterval(interval);
-      }
-    }, 25);
-    return () => clearInterval(interval);
-  });
+    const animatedChars = textArray.map((char: string, index: number) => {
+      delay += 0.1;
+      return (
+        <span
+          key={`${index}__${char}__falling`}
+          style={{ animationDelay: `${delay}s` }}
+          className={`${styles.falling__char} subtitle secondary-font-color text-shadow`}
+        >
+          {char}
+        </span>
+      );
+    });
+
+    setAnimatedText(animatedChars);
+  }, [text]);
 
   return (
     <span
-      key={key}
-      className={`d-flex flex-row ${styles.fall_in_text_entry__container}`}
+      className={`${styles.falling__text__container} ${styles.fall_in_text_entry__container}`}
     >
-      {element}
+      {/**
+       * This is to make sure that the original text is present in the DOM before the animation starts.
+       * FOR SEO PURPOSES
+       */}
+      {showOriginalText ? (
+        <span className={styles.initial__text}>{text}&nbsp;</span>
+      ) : null}
+
+      {animatedText}
     </span>
   );
 }

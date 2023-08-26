@@ -1,3 +1,26 @@
 .fall_in_text_entry__container {
   margin: 0 0.6rem;
 }
+
+.falling__text__container {
+  display: inline-flex;
+  align-items: center;
+}
+
+.falling__char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(-50px);
+  animation: fallAnimation 0.5s forwards ease-in-out;
+}
+
+.initial__text {
+  color: transparent;
+}
+
+@keyframes fallAnimation {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
