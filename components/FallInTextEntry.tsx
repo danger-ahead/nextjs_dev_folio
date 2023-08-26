@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import styles from "../styles/components/FallInTextEntry.module.css";
 
 export default function FallInTextEntry(
   data: string,
@@ -34,7 +35,10 @@ export default function FallInTextEntry(
   });
 
   return (
-    <span key={key} className="d-flex flex-row margin-left margin-right">
+    <span
+      key={key}
+      className={`d-flex flex-row ${styles.fall_in_text_entry__container}`}
+    >
       {element}
     </span>
   );

@@ -23,7 +23,7 @@ export default function Title({ title }: { title: string }) {
       className={`d-flex justify-content-start align-items-center margin-left ${styles.title__container}`}
     >
       {HtmlTags(`<!--`, "white-space-nowrap")}
-      <h3 className={`d-flex flex-row flex-wrap ${styles.title}`}>
+      <h3 className={`d-flex flex-row flex-wrap w-100p ${styles.title}`}>
         {titleElements}
       </h3>
       {HtmlTags(`-->`, "white-space-nowrap")}

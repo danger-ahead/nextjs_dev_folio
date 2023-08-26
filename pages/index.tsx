@@ -40,10 +40,7 @@ export default function Home() {
 
     tagline.push(
       <p
-        style={{
-          gap: "0.6rem",
-        }}
-        className="margin-left d-flex flex-wrap"
+        className={`margin-left d-flex flex-wrap ${styles.tagline}`}
         key={`${sentence}`}
       >
         {row}
@@ -82,12 +79,7 @@ export default function Home() {
         <span className="margin-left">
           {ElasticText("Hi, I'm", "subtitle")}
         </span>
-        <h2
-          style={{
-            gap: "1rem",
-          }}
-          className="margin-left d-flex flex-wrap"
-        >
+        <h2 className={`margin-left d-flex flex-wrap ${styles.name}`}>
           {name}
         </h2>
         {HtmlTags(`</h>`, "")}

@@ -66,7 +66,7 @@ export default function Experience({
           className="d-flex flex-column"
         >
           {HtmlTags("<title> ", "white-space-nowrap")}
-          <div className="d-flex flex-row margin-left">
+          <div className="d-flex flex-row flex-wrap margin-left">
             <span className="primary-font-color text">{`${experience["title"]}`}</span>
             &emsp;
             <a
@@ -112,7 +112,7 @@ export default function Experience({
             className="d-flex flex-column"
           >
             {HtmlTags("<title> ", "white-space-nowrap")}
-            <div className="d-flex flex-row margin-left">
+            <div className="d-flex flex-row flex-wrap margin-left">
               <span className="primary-font-color text">{`${experience["title"]}`}</span>
               &emsp;
               <a

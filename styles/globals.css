@@ -64,14 +64,6 @@ button {
   font-size: calc(1rem + ((1vw - 7.68px) * 0.3472));
 }
 
-.margin-left-33px {
-  margin-left: 33px;
-}
-
-.margin-top-10px {
-  margin-top: 10px;
-}
-
 .cursor-pointer {
   cursor: pointer;
 }

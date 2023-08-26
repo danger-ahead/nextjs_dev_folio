@@ -2,6 +2,14 @@
   display: none;
 }
 
+.tagline {
+  gap: 0.6rem;
+}
+
+.name {
+  gap: 1rem;
+}
+
 @media screen and (max-width: 900px) {
   .mobile__resume__block {
     display: block;
