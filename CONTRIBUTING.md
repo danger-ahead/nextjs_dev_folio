@@ -6,7 +6,7 @@ Before you start contributing, please take a moment to read the following guidel
 
 ## Technology Stack
 
-![Technology Stack](https://skillicons.dev/icons?i=git,html,css,react)
+![Technology Stack](https://skillicons.dev/icons?i=nextjs,html,css,react)
 
 ## Table of Contents
 
