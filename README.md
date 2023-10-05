@@ -25,13 +25,13 @@ To run the project locally, follow these steps:
 3. Install the project dependencies:
 
    ```bash
-   npm install
+   pnpm install
    ```
 
 4. Start the development server:
 
    ```bash
-   npm run dev
+   pnpm run dev
    ```
 
 The application should now be accessible locally at `http://localhost:3000`.
@@ -46,7 +46,7 @@ To customize the portfolio and add your personal information, follow these steps
 
 3. Open the `public/data.json` file in your project and paste the image link at [data.json](https://github.com/danger-ahead/nextjs_dev_folio/blob/bcbe65c293f114242fcbb0585e397951b2f0dab6/public/data.json#L3).
 
-4. Copy the `.env.example` file to `.env.local` and update the values with your own configuration.
+4. Copy the `.env.example` file to `.env.local` and update the values with your own configuration. 
 
 ### Tech Stack
 
