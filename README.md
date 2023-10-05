@@ -60,6 +60,14 @@ Here's the technology stack used in this project:
 
 Describe how users can use and interact with your portfolio website. Include any special features or functionalities they should be aware of.
 
+## Owner Experience
+
+- **Software Development Enthusiast**: I have a strong passion for software development and have been actively involved in various projects, including open-source contributions and personal endeavors.
+- **Startup Collaborations**: I've had the privilege of working with startups, where I've gained a deep understanding of the significance of well-designed products and their impact on user experiences.
+- **Clean Code Advocate**: I'm unapologetically a "clean code" enthusiast, believing that elegantly designed and well-structured code improves overall software quality and maintenance.
+- **Open-Source Contributions**: I'm deeply engaged in the open-source community, making significant contributions to projects like Next.js, CircuitVerse Mobile App, Flutter Community, and Invoice Ninja Admin Portal.
+- **Ongoing Learning**: Currently, I'm delving into the depths of Flutter and web development using JS-based frameworks, enjoying the process of learning about the intricacies of these technologies.
+
 ## Contributing
 
 If you'd like to contribute to this project, please follow these guidelines:
