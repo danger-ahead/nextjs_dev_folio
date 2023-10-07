@@ -46,7 +46,9 @@ To customize the portfolio and add your personal information, follow these steps
 
 3. Open the `public/data.json` file in your project and paste the image link at [data.json](https://github.com/danger-ahead/nextjs_dev_folio/blob/bcbe65c293f114242fcbb0585e397951b2f0dab6/public/data.json#L3).
 
-4. Copy the `.env.example` file to `.env.local` and update the values with your own configuration. 
+4. Edit the content of mdx file in the static directory to change the content of the portfolio.
+
+5. Copy the `.env.example` file to `.env.local` and update the values with your own configuration. 
 
 ### Tech Stack
 
@@ -55,18 +57,6 @@ Here's the technology stack used in this project:
 - Next.js
 - React
 - CSS
-
-## Usage
-
-Describe how users can use and interact with your portfolio website. Include any special features or functionalities they should be aware of.
-
-## Owner Experience
-
-- **Software Development Enthusiast**: I have a strong passion for software development and have been actively involved in various projects, including open-source contributions and personal endeavors.
-- **Startup Collaborations**: I've had the privilege of working with startups, where I've gained a deep understanding of the significance of well-designed products and their impact on user experiences.
-- **Clean Code Advocate**: I'm unapologetically a "clean code" enthusiast, believing that elegantly designed and well-structured code improves overall software quality and maintenance.
-- **Open-Source Contributions**: I'm deeply engaged in the open-source community, making significant contributions to projects like Next.js, CircuitVerse Mobile App, Flutter Community, and Invoice Ninja Admin Portal.
-- **Ongoing Learning**: Currently, I'm delving into the depths of Flutter and web development using JS-based frameworks, enjoying the process of learning about the intricacies of these technologies.
 
 ## Contributing
 
