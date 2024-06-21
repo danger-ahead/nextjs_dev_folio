@@ -23,6 +23,8 @@ To run the project locally, follow these steps:
    ```
 
 3. Install the project dependencies:
+  > [!NOTE]  
+  > pnpm is an efficient version of npm and you can install it using `npm install -g pnpm` in the terminal after cloning the repository.
 
    ```bash
    pnpm install
