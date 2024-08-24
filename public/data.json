@@ -3,20 +3,27 @@
   "picture": "https://i.imgur.com/4UzPCGg.png",
   "about": "Hello, my name is Shourya Shikhar Ghosh. I'm a final yr. CS Engineering student. Web, App & Backend Developer, Open Source Contributor and a Linux Enthusiast. Few technologies I've been working with recently: TypeScript, NextJS, Supabase, FastAPI & Flutter.",
   "tagline": ["I build stuff for you,", "for the web,", "for the world."],
-  "email": "danger.ahead@protonmail.com",
+  "email": "shourya.shikhar.999@hotmail.com",
   "experience": [
     {
-      "title": "Mobile Application Developer",
-      "company": "Microbase Infotech Pvt. Ltd.",
-      "company_url": "https://www.microbaseinfotech.com/",
-      "duration": "July 2023 - Present"
+      "title": "Flutter SDE",
+      "company": "EzeRx",
+      "company_url": "https://ezerx.in/",
+      "duration": "December 2023 - Present"
     },
     {
       "title": "SWE Intern",
       "company": "Buzzli.ai",
       "company_url": "https://buzzli.in",
-      "duration": "June 2023 - Present"
+      "duration": "June 2023 - December 2023"
     },
+    {
+      "title": "Mobile Application Developer",
+      "company": "Microbase Infotech Pvt. Ltd.",
+      "company_url": "https://www.microbaseinfotech.com/",
+      "duration": "July 2023 - September 2023"
+    },
+
     {
       "title": "SDE Intern",
       "company": "Ekko",
@@ -53,5 +60,5 @@
     "twitter": "https://twitter.com/___shourya___",
     "instagram": "https://instagram.com/definitelynotshourya"
   },
-  "resume": "https://www.overleaf.com/read/qcrdxwkkrjns"
+  "resume": "https://1drv.ms/b/s!ArKQSZ86sfSwgc4y4wEgoDDE1lLXrg?e=OZeq7f"
 }
