@@ -16,7 +16,7 @@ export async function getStaticProps() {
   >[] = [];
 
   {
-    data.experience.forEach((experience, index) => {
+    for (let index = data.experience.length - 1; index >= 0; index--) {
       const source = fs.readFileSync(
         path.join("static/experience", `${index + 1}.mdx`),
         "utf8"
@@ -26,7 +26,7 @@ export async function getStaticProps() {
           parseFrontmatter: true,
         })
       );
-    });
+    }
   }
 
   data.additionalExperience?.experience.forEach((experience, index) => {
@@ -202,7 +202,7 @@ export default function Experience({
                   <span
                     className={`text-small button-effect ${styles.experience__company__name}`}
                   >
-                    {`${index + 1}. ${experience["company"]}`}
+                    {`${experience["company"]}`}
                   </span>
                   {HtmlTags("</button>", "white-space-nowrap")}
                 </button>

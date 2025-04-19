@@ -1,5 +1,7 @@
 import Head from "next/head";
 
+import type { JSX } from "react";
+
 function NearbyChat(): JSX.Element {
   return (
     <>

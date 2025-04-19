@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, type JSX } from "react";
 import Card from "../../components/ProjectCard";
 import { ProjectDataArr } from "../../models/DataTypes";
 import { data } from "../../repository/DataRepository";

@@ -1,4 +1,4 @@
-import { ReactElement, JSXElementConstructor, ReactFragment } from "react";
+import { ReactElement, JSXElementConstructor, ReactNode } from "react";
 import { data } from "../repository/DataRepository";
 import { handleNavBarCollapse } from "../utils/NavBarCollapse";
 import { HtmlTags } from "./HtmlTags";
@@ -7,7 +7,7 @@ import NavBar from "./NavBar";
 export default function PageBody(
   children:
     | ReactElement<any, string | JSXElementConstructor<any>>
-    | ReactFragment
+    | Iterable<ReactNode>
 ) {
   return (
     <main onClick={handleNavBarCollapse} className="d-flex flex-column mh-100p">

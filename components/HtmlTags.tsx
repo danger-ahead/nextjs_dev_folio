@@ -1,14 +1,14 @@
 import {
   ReactElement,
   JSXElementConstructor,
-  ReactFragment,
+  ReactNode,
   ReactPortal,
 } from "react";
 
 export function HtmlTags(
   children:
     | ReactElement<any, string | JSXElementConstructor<any>>
-    | ReactFragment
+    | Iterable<ReactNode>
     | ReactPortal,
   cssClass: String
 ) {

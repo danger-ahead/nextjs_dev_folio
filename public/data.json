@@ -1,15 +1,21 @@
 {
   "intro": "Shourya Shikhar",
-  "picture": "https://i.imgur.com/4UzPCGg.png",
+  "picture": "https://avatars.githubusercontent.com/u/55531939?s=400&u=1bd7a5a5bdbe2b1d66a63015e75ad4c591818e08&v=4",
   "about": "Hello, my name is Shourya Shikhar Ghosh. I'm a final yr. CS Engineering student. Web, App & Backend Developer, Open Source Contributor and a Linux Enthusiast. Few technologies I've been working with recently: TypeScript, NextJS, Supabase, FastAPI & Flutter.",
   "tagline": ["I build stuff for you,", "for the web,", "for the world."],
   "email": "shourya.shikhar.999@hotmail.com",
   "experience": [
     {
+      "title": "SDE 1",
+      "company": "smallcase | Tickertape",
+      "company_url": "https://smallcase.com/",
+      "duration": "March 2025 - Present"
+    },
+    {
       "title": "Flutter SDE",
       "company": "EzeRx",
       "company_url": "https://ezerx.in/",
-      "duration": "December 2023 - Present"
+      "duration": "December 2023 - February 2025"
     },
     {
       "title": "SWE Intern",
