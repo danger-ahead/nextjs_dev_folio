@@ -104,7 +104,7 @@ export default function Contact({
         <link
           rel="preconnect"
           href="https://fonts.googleapis.com"
-          crossOrigin="true"
+          crossOrigin="anonymous"
         />
       </Head>
       <div className="margin-left d-flex flex-column">

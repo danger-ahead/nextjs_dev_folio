@@ -26,7 +26,7 @@ function NearbyChat(): JSX.Element {
         <link
           rel="preconnect"
           href="https://fonts.googleapis.com"
-          crossOrigin="true"
+          crossOrigin="anonymous"
         />
       </Head>
       <main className="primary-font-color margin-left margin-right">

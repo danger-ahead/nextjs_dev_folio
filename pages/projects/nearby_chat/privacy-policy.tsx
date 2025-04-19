@@ -1,5 +1,4 @@
 import Head from "next/head";
-
 import type { JSX } from "react";
 
 function NearbyChat(): JSX.Element {
@@ -26,7 +25,7 @@ function NearbyChat(): JSX.Element {
         <link
           rel="preconnect"
           href="https://fonts.googleapis.com"
-          crossOrigin="true"
+          crossOrigin="anonymous"
         />
       </Head>
       <main className="primary-font-color margin-left margin-right">

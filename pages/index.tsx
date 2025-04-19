@@ -71,7 +71,7 @@ export default function Home() {
         <link
           rel="preconnect"
           href="https://fonts.googleapis.com"
-          crossOrigin="true"
+          crossOrigin="anonymous"
         />
       </Head>
       <div className="d-flex flex-column margin-left">

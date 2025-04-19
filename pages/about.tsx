@@ -44,7 +44,7 @@ export default function About({
         <link
           rel="preconnect"
           href="https://fonts.googleapis.com"
-          crossOrigin="true"
+          crossOrigin="anonymous"
         />
       </Head>
       <div
