@@ -10,16 +10,16 @@
   },
   "dependencies": {
     "@types/node": "20.4.10",
-    "@types/react-dom": "18.0.10",
+    "@types/react-dom": "19.2.3",
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.13",
-    "next": "14.2.35",
+    "next": "15.5.20",
     "next-mdx-remote": "6.0.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react": "19.2.7",
+    "react-dom": "19.2.7"
   },
   "devDependencies": {
-    "@types/react": "19.1.2",
+    "@types/react": "19.2.17",
     "prettier": "2.8.1",
     "typescript": "^5.1.6"
   }

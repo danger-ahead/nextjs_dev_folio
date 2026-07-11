@@ -50,6 +50,7 @@
   },
   "githubUserID": "danger-ahead",
   "repos": [
+    "vsc-tabbed-emulator",
     "flutter_dev_folio",
     "flutter_dictionary",
     "simple_chips_input",
