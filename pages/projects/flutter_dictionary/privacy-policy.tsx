@@ -23,11 +23,6 @@ function NearbyChat(): JSX.Element {
         <meta property="og:type" content="article" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
-        <link
-          rel="preconnect"
-          href="https://fonts.googleapis.com"
-          crossOrigin="anonymous"
-        />
       </Head>
       <main className="primary-font-color margin-left margin-right">
         <h1>Privacy Policy</h1>

@@ -171,11 +171,6 @@ export default function Experience({
         <meta property="og:type" content="website" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
-        <link
-          rel="preconnect"
-          href="https://fonts.googleapis.com"
-          crossOrigin="anonymous"
-        />
       </Head>
       <main key="experience-page">
         <Title title="My Experience" />

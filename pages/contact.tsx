@@ -101,11 +101,6 @@ export default function Contact({
         <meta property="og:type" content="website" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
-        <link
-          rel="preconnect"
-          href="https://fonts.googleapis.com"
-          crossOrigin="anonymous"
-        />
       </Head>
       <div className="margin-left d-flex flex-column">
         <Title title="Get In Touch" />
