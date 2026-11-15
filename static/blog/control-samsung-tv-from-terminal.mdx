@@ -1,0 +1,184 @@
+Typing a search on a TV remote is miserable. My Samsung Smart Monitor M7 is on the same network as my computer, and Samsung's Tizen TVs have a local API, so I wanted to type into it from my actual keyboard.
+
+I ended up with a single Python file, standard library only, that:
+
+- sends any remote key (volume, arrows, home, back)
+- turns the TV off and back on
+- opens a small shell where plain text gets typed into the TV and the arrow keys work as a remote
+
+Some things didn't work out. Those are near the end, followed by the full script.
+
+### What you need
+
+- A Samsung TV or Smart Monitor running Tizen. Mine is the [2024 43" M7](https://www.samsung.com/in/monitors/smart/smart-monitor-m7-43-inch-smart-tv-apps-4k-uhd-ls43fm700uwxxl/) (`LS43DM700U`).
+- A Mac or Linux machine on the same network. Wired is fine: my Mac is on ethernet, the TV is on wifi.
+- Python 3. No packages.
+
+### 1. Find the TV
+
+Ping everything on your subnet so the ARP table fills up, then list what answered:
+
+```sh
+for i in $(seq 1 254); do ping -c1 -W300 192.168.1.$i >/dev/null 2>&1 & done; wait
+arp -an | grep -v incomplete
+```
+
+Replace `192.168.1` with your subnet. `-W300` is milliseconds on macOS; on Linux use `-W1`.
+
+Samsung TVs answer HTTP on port 8001. Try each candidate:
+
+```sh
+curl -s http://192.168.1.50:8001/api/v2/
+```
+
+The TV replies with a blob of JSON. Look for `modelName`, `PowerState`, and `wifiMac`. You'll need the MAC later.
+
+While you're here, reserve that IP for the TV in your router so it doesn't change.
+
+### 2. Two settings on the TV
+
+- **Settings → General → Network → Expert Settings → IP Remote**: on. I turned this on while debugging. I'm not sure it's required, but it doesn't hurt.
+- **Settings → General → External Device Manager → Device Connection Manager**: make sure Access Notification is on. If pairing goes wrong, check the Device List here for denied clients.
+
+Menu names shift a little between models and years.
+
+### 3. Pairing (where most of my time went)
+
+The remote control channel is a websocket:
+
+```
+wss://<TV_IP>:8002/api/v2/channels/samsung.remote.control?name=<base64 name>&token=<token>
+```
+
+The first time a client connects without a token, the TV shows an Allow prompt. Accept it and the TV sends an `ms.channel.connect` event with a token inside. Save it and send it on later connections, and the prompt doesn't come back. The TV uses a self-signed certificate, so certificate checks have to be off.
+
+That's how it's supposed to go. My first try used Node 22's built-in `WebSocket`. The connection opened and then nothing happened: no prompt on the TV, no messages, no error, no close. I tried port 8001, new client names, and the settings above. Same silence every time.
+
+Writing the handshake by hand in Python fixed it. The prompt showed up immediately. I never figured out what the TV dislikes about Node's client, but if your TV accepts the connection and then goes quiet, try a different client before you blame the TV.
+
+The handshake is a plain HTTP request over TLS:
+
+```python
+ctx = ssl.create_default_context()
+ctx.check_hostname, ctx.verify_mode = False, ssl.CERT_NONE   # self-signed cert
+sock = ctx.wrap_socket(socket.create_connection((IP, 8002), timeout=60))
+
+name = base64.b64encode(b"PyRemote").decode()
+key = base64.b64encode(os.urandom(16)).decode()
+sock.sendall(
+    f"GET /api/v2/channels/samsung.remote.control?name={name} HTTP/1.1\r\n"
+    f"Host: {IP}:8002\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n"
+    f"Sec-WebSocket-Key: {key}\r\nSec-WebSocket-Version: 13\r\n\r\n".encode())
+```
+
+After `101 Switching Protocols`, the TV waits until you press Allow (that's why the timeout is 60 seconds), then sends the token. The full script also handles websocket framing: frames you send must be masked, and the TV sends pings that need a pong back.
+
+The token is tied to the client name. Change the name and you'll get the prompt again.
+
+### 4. Sending keys
+
+A key press is one JSON message:
+
+```json
+{
+  "method": "ms.remote.control",
+  "params": {
+    "Cmd": "Click",
+    "DataOfCmd": "KEY_VOLUP",
+    "Option": "false",
+    "TypeOfRemote": "SendRemoteKey"
+  }
+}
+```
+
+Keys I use: `KEY_VOLUP`, `KEY_VOLDOWN`, `KEY_MUTE`, `KEY_HOME`, `KEY_RETURN` (back), `KEY_ENTER` (OK), `KEY_UP` / `KEY_DOWN` / `KEY_LEFT` / `KEY_RIGHT`, `KEY_SOURCE`, `KEY_POWER`.
+
+```sh
+python3 samsung-tv.py KEY_VOLUP
+python3 samsung-tv.py KEY_MUTE KEY_HOME
+```
+
+### 5. Turning it back on
+
+Off is just `KEY_POWER`. For on, I reached for Wake-on-LAN: enabled **Power On with Mobile** (same Expert Settings menu) and sent magic packets to the TV's MAC.
+
+Nothing. But I noticed the API was still answering after I'd turned the TV off, with `"PowerState": "standby"`. The TV keeps its network up in standby, so the normal `KEY_POWER` over the websocket wakes it. It came back in about two seconds.
+
+So the `on` command checks first:
+
+| PowerState | What `on` does            |
+| ---------- | ------------------------- |
+| on         | nothing                   |
+| standby    | sends `KEY_POWER`         |
+| no answer  | falls back to Wake-on-LAN |
+
+`KEY_POWER` toggles, which is why it checks rather than sending blindly. I've left the Wake-on-LAN fallback in for when the TV drops off the network completely, but I've never seen that happen, so it's untested.
+
+### 6. Typing from the keyboard
+
+This is why I started. Run the script with no arguments and you get a prompt:
+
+```sh
+$ python3 samsung-tv.py
+connected to TV at 192.168.1.50
+tv> /home
+tv> /nav          # arrow keys drive the TV now, q to leave
+tv> lofi beats    # plain text goes into whatever text field is focused
+tv> /vol+ 3
+tv> /off
+```
+
+Text is sent base64-encoded with `SendInputString`, then `SendInputEnd`:
+
+```json
+{
+  "method": "ms.remote.control",
+  "params": {
+    "Cmd": "<base64 text>",
+    "DataOfCmd": "base64",
+    "TypeOfRemote": "SendInputString"
+  }
+}
+```
+
+If your TV closes the on-screen keyboard too early, or doesn't submit, try dropping the `SendInputEnd` message.
+
+If you write your own, three notes:
+
+- Keep one connection open. A new TLS connection per key press makes arrow-key navigation laggy.
+- I kept it single-threaded. A background reader thread is the obvious design, but Python's SSL sockets aren't safe to read and write from two threads at once. Before each send, the script reads whatever the TV has sent since. That's where it answers pings and notices when a text field opens.
+- If a send fails, reconnect once and retry, so a dropped connection doesn't kill the shell.
+
+### What didn't work
+
+- **Listing installed apps.** The usual request (`ms.channel.emit` with event `ed.installedApp.get`) made the TV close the connection with reason `notack`. My guess is newer firmware blocks it for third-party remotes. I had a second connection open at the time, so I can't completely rule that out.
+
+  You can still check one app at a time over HTTP:
+
+  ```sh
+  curl http://<TV_IP>:8001/api/v2/applications/111299001912
+  # {"id":"111299001912","name":"YouTube","running":true,"version":"2.1.527","visible":true}
+  ```
+
+  IDs that worked on mine: YouTube `111299001912`, Netflix `3201907018807`, Apple TV `3201807016597`, Apple Music `3201908019041`. A `POST` to the same URL is supposed to launch the app. I didn't test that.
+
+- **Uninstalling Samsung TV Plus.** Not possible. It's part of Tizen, and [Samsung says it can't be uninstalled](https://www.samsung.com/au/support/tv-audio-video/disable-samsung-tv-plus), which is why Delete is greyed out. There's no uninstall call in the API either. You can hide it: highlight the tile on the Home screen, press Down, choose Remove.
+
+- **Opening the app store from the terminal.** I couldn't find the store's app ID, and the launch call people use (`ed.apps.launch`) [is reported not to work on newer models](https://forum.developer.samsung.com/t/remote-control-launch-tv-apps-via-websocket-interface/36812). `/home`, then `/nav` over to Apps, does the job.
+
+- **Apps that aren't in the store.** This is Tizen, not Android, so no APKs. Sideloading needs Developer Mode, Tizen Studio, and a Samsung certificate issued for your specific TV. [Samsung's setup guide](https://developer.samsung.com/tv/develop/getting-started/using-sdk/tv-device) covers it.
+
+### Gotchas
+
+- **TV accepts the websocket but never prompts:** try another client. Node 22's built-in `WebSocket` got silence; a raw Python handshake worked.
+- **Token is tied to the client name:** change the name and you pair again.
+- **Standby isn't off:** the API still answers and the power key wakes it.
+- **`KEY_POWER` toggles:** check `PowerState` before sending it.
+- **Certificate checks are off** because of the self-signed cert. Fine on a home network; don't copy that setting anywhere else.
+- **The token lives in `~/.samsung-tv-token`:** `chmod 600` it if you share the machine.
+
+### The full script
+
+Set `IP`, `MAC` and `BROADCAST` at the top, save it as `samsung-tv.py`, and run `python3 samsung-tv.py KEY_VOLUP`. Accept the prompt on the TV the first time. It uses `termios`, so it runs on macOS and Linux, not Windows.
+
+<Gist id="9366b1f8d3536234e6c965bfbd81a82e" />

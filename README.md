@@ -50,6 +50,8 @@ To customize the portfolio and add your personal information, follow these steps
 
 4. Edit the content of mdx file in the static directory to change the content of the portfolio.
 
+   To add a blog post, add an entry to `blog` in `public/data.json` (`slug`, `title`, `description`, `date` as `YYYY-MM-DD`, `tags`) and write the post in `static/blog/<slug>.mdx`. Slugs and tags must be lowercase words joined by hyphens (e.g. `home-network`); they become the post and tag URLs. Embed a GitHub gist with `<Gist id="<gist id>" />`.
+
 5. Copy the `.env.example` file to `.env.local` and update the values with your own configuration. 
 
 ### Tech Stack

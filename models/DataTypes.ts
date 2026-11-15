@@ -9,6 +9,14 @@ export interface Experience {
   duration: string;
 }
 
+export interface BlogPost {
+  slug: string;
+  title: string;
+  description: string;
+  date: string;
+  tags: string[];
+}
+
 export type Data = {
   intro: String;
   picture: string;
@@ -22,6 +30,7 @@ export type Data = {
   };
   githubUserID: string;
   repos: string[];
+  blog: BlogPost[];
   socials: map;
   resume: string;
 };
