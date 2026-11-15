@@ -9,6 +9,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@shikijs/rehype": "4.6.0",
     "@types/node": "26.6.6",
     "@types/react-dom": "19.3.0",
     "@vercel/analytics": "2.0.1",
@@ -17,7 +18,8 @@
     "next": "16.4.5",
     "next-mdx-remote": "6.0.0",
     "react": "19.3.1",
-    "react-dom": "19.3.1"
+    "react-dom": "19.3.1",
+    "remark-gfm": "4.0.1"
   },
   "devDependencies": {
     "@types/react": "19.3.0",

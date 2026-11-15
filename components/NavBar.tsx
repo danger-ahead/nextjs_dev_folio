@@ -107,6 +107,27 @@ export default function NavBar() {
         <div className="navbar-gap"></div>
         <Link
           className={`text-small text-decoration-none primary-font-color button-effect`}
+          href="/blogs"
+        >
+          <span>
+            {HtmlTags(
+              "<",
+              `${
+                route.pathname.startsWith("/blogs") ? "secondary-font-color" : ""
+              }`
+            )}
+            blogs
+            {HtmlTags(
+              "/>",
+              `${
+                route.pathname.startsWith("/blogs") ? "secondary-font-color" : ""
+              }`
+            )}
+          </span>
+        </Link>
+        <div className="navbar-gap"></div>
+        <Link
+          className={`text-small text-decoration-none primary-font-color button-effect`}
           href="/contact"
         >
           <span>

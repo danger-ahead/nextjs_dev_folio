@@ -11,6 +11,7 @@ export const data: Data = {
   email: dataFromJson.email,
   githubUserID: dataFromJson.githubUserID,
   repos: dataFromJson.repos,
+  blog: dataFromJson.blog,
   socials: dataFromJson.socials,
   resume: dataFromJson.resume,
 };

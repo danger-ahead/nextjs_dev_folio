@@ -60,6 +60,15 @@
     "techtrix22-backend",
     "roBOT"
   ],
+  "blog": [
+    {
+      "slug": "control-samsung-tv-from-terminal",
+      "title": "Controlling my Samsung TV from the terminal",
+      "description": "Pairing with a Tizen TV's local API in plain Python: sending remote keys, waking it from standby, and typing into it from a real keyboard.",
+      "date": "2026-11-15",
+      "tags": ["samsung", "tizen", "smart-tv", "python", "websocket", "wake-on-lan", "ip-remote", "home-network"]
+    }
+  ],
   "socials": {
     "linkedin": "https://linkedin.com/in/shourya-shikhar",
     "github": "https://github.com/danger-ahead",

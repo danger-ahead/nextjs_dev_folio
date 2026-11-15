@@ -1,11 +1,13 @@
 import type { GetServerSideProps } from "next";
 import { getSiteUrl } from "../utils/SiteUrl";
+import { getPosts } from "../utils/Blog";
 
 const publicRoutes = [
   "/",
   "/about",
   "/experience",
   "/projects",
+  "/blogs",
   "/contact",
   "/projects/flutter_dictionary/privacy-policy",
   "/projects/nearby_chat/privacy-policy",
@@ -26,7 +28,13 @@ function escapeXml(value: string): string {
 }
 
 function createSitemap(siteUrl: string): string {
-  const urls = publicRoutes
+  const posts = getPosts();
+  const routes = [
+    ...publicRoutes,
+    ...posts.map(({ slug }) => `/blogs/${slug}`),
+    ...new Set(posts.flatMap(({ tags }) => tags.map((tag) => `/blogs/tags/${tag}`))),
+  ];
+  const urls = routes
     .map((route) => {
       const location = escapeXml(new URL(route, `${siteUrl}/`).toString());
 
